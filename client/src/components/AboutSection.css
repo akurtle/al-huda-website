@@ -1,0 +1,77 @@
+.about-section { padding: 6rem 0; position: relative; z-index: 1; }
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.about-content .section-title { text-align: left; margin-bottom: 1.5rem; }
+
+.about-text { color: var(--gray-500); line-height: 1.8; margin-bottom: 1.5rem; }
+
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.value-item { display: flex; gap: 1rem; align-items: flex-start; }
+
+.value-icon {
+  width: 48px; height: 48px; min-width: 48px;
+  border-radius: var(--radius-md);
+  background: var(--primary-surface);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-item h4 { font-size: 1rem; font-weight: 700; color: var(--gray-800); margin-bottom: 0.25rem; }
+.value-item p { font-size: 0.9rem; color: var(--gray-500); line-height: 1.5; }
+
+.about-visual { display: flex; justify-content: center; }
+
+.about-pattern-card {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-green);
+}
+
+.about-pattern-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.quran-verse { position: relative; z-index: 1; text-align: center; }
+
+.verse-arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.75rem;
+  line-height: 2;
+  margin-bottom: 2rem;
+  direction: rtl;
+}
+
+.verse-translation { font-size: 1.05rem; line-height: 1.8; opacity: 0.9; font-style: italic; margin-bottom: 1rem; }
+.verse-reference { font-size: 0.85rem; opacity: 0.7; font-weight: 500; }
+
+@media (max-width: 992px) {
+  .about-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .about-content .section-title { text-align: center; }
+  .about-content { text-align: center; }
+  .about-values { align-items: center; }
+  .value-item { max-width: 400px; text-align: left; }
+}

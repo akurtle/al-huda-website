@@ -1,0 +1,79 @@
+.features-section {
+  padding: 6rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--green-200);
+}
+
+.feature-card:hover::before { opacity: 1; }
+
+.feature-card.featured {
+  border-color: var(--green-200);
+  background: linear-gradient(180deg, var(--green-50) 0%, var(--white) 100%);
+}
+.feature-card.featured::before { opacity: 1; }
+
+.feature-badge {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  padding: 0.2rem 0.75rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.feature-icon {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.feature-icon-prayer { background: linear-gradient(135deg, rgba(27,122,61,0.1), rgba(27,122,61,0.05)); color: var(--primary); }
+.feature-icon-zakaat { background: linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05)); color: var(--gold-dark); }
+.feature-icon-community { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.05)); color: var(--info); }
+
+.feature-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem; }
+.feature-card p { color: var(--gray-500); line-height: 1.7; margin-bottom: 1.5rem; }
+
+.feature-link { font-size: 0.9rem; font-weight: 600; color: var(--primary); }
+.feature-link:hover { color: var(--primary-dark); letter-spacing: 0.5px; }
+
+@media (max-width: 992px) {
+  .features-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+}
