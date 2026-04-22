@@ -6,7 +6,7 @@ const sections = [
     id: 'intro', title: '1. Introduction',
     content: (
       <>
-        <p>Welcome to Ummah Connect ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, disclose, and safeguard your information when you use our website and mobile application (collectively, the "Service").</p>
+        <p>Welcome to Al Huda ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, disclose, and safeguard your information when you use our website and mobile application (collectively, the "Service").</p>
         <p>By using the Service, you agree to the collection and use of information in accordance with this policy. If you do not agree with the terms of this privacy policy, please do not access the Service.</p>
       </>
     )
@@ -57,7 +57,7 @@ const sections = [
         <ul>
           <li><strong>Service Providers:</strong> With trusted third-party companies that help us operate the Service (e.g., Firebase, hosting providers).</li>
           <li><strong>Legal Requirements:</strong> When required by law or in response to valid legal processes.</li>
-          <li><strong>Protection:</strong> To protect the rights, property, or safety of Ummah Connect, our users, or the public.</li>
+          <li><strong>Protection:</strong> To protect the rights, property, or safety of Al Huda, our users, or the public.</li>
           <li><strong>Consent:</strong> With your explicit consent for any other purpose.</li>
         </ul>
       </>
@@ -115,7 +115,7 @@ const sections = [
         <div className="contact-card">
           <div className="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>privacy@ummahconnect.com</span>
+            <span>privacy@alhuda.com</span>
           </div>
           <div className="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>

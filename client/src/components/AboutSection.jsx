@@ -7,12 +7,12 @@ export default function AboutSection() {
         <div className="about-layout">
           <div className="about-content">
             <span className="section-tag">About Us</span>
-            <h2 className="section-title">Serving the Ummah with Excellence</h2>
+            <h2 className="section-title">Serving the Community with Excellence</h2>
             <p className="about-text">
-              Ummah Connect is dedicated to providing the Muslim community with reliable, accurate, and beautifully designed Islamic tools and resources. Our mission is to make essential Islamic services accessible to everyone, everywhere.
+              Al Huda is dedicated to providing the Muslim community with reliable, accurate, and beautifully designed Islamic tools and resources. Our mission is to make essential Islamic services accessible to everyone, everywhere.
             </p>
             <p className="about-text">
-              Whether you need accurate prayer times for your location, want to calculate your Zakaat obligation, or are looking to connect with your local Muslim community — Ummah Connect is here for you.
+              Whether you need accurate prayer times for your location, want to calculate your Zakaat obligation, or are looking to connect with your local Muslim community — Al Huda is here for you.
             </p>
             <div className="about-values">
               {[

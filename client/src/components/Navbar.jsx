@@ -58,7 +58,7 @@ export default function Navbar() {
                 <path d="M16 26 Q20 22 24 26" stroke="currentColor" strokeWidth="1.5" fill="none"/>
               </svg>
             </div>
-            <span className="logo-text">Ummah<span className="logo-accent">Connect</span></span>
+            <span className="logo-text">Al<span className="logo-accent">Huda</span></span>
           </Link>
 
           <ul className="nav-links">

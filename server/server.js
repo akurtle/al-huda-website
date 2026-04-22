@@ -1,5 +1,5 @@
 // ========================================
-// Express.js Server — Ummah Connect
+// Express.js Server — Al Huda
 // ========================================
 const express = require('express');
 const cors = require('cors');
@@ -59,7 +59,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🕌 Ummah Connect API running on port ${PORT}`);
+  console.log(`🕌 Al Huda API running on port ${PORT}`);
   console.log(`   Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 

@@ -15,7 +15,7 @@ export default function Footer() {
                   <circle cx="20" cy="18" r="4" fill="currentColor"/>
                 </svg>
               </div>
-              <span className="logo-text">Ummah<span className="logo-accent">Connect</span></span>
+              <span className="logo-text">Al<span className="logo-accent">Huda</span></span>
             </Link>
             <p className="footer-tagline">Your trusted Islamic community platform for prayer times, Zakaat calculations, and more.</p>
           </div>
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2026 Ummah Connect. All rights reserved.</p>
+          <p>&copy; 2026 Al Huda. All rights reserved.</p>
           <p className="footer-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
         </div>
       </div>
