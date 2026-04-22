@@ -1,5 +1,5 @@
 // ========================================
-// Base Model — Flexible Schema Pattern
+// Base Model - Flexible Schema Pattern
 // ========================================
 // All models extend BaseModel.
 // Each model defines its fields but allows arbitrary 

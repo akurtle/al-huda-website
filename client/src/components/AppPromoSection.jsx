@@ -20,7 +20,7 @@ export default function AppPromoSection() {
             <span className="section-tag">Mobile Experience</span>
             <h2 className="promo-title">Faith in Your <span className="text-gradient">Pocket</span></h2>
             <p className="promo-description">
-              Get the full Al Huda experience on the go. Stay connected to your faith with adhan notifications, a comprehensive Zakaat tracker, and community updates—all in a beautiful, easy-to-use mobile app.
+              Get the full Al Huda experience on the go. Stay connected to your faith with adhan notifications, a comprehensive Zakaat tracker, and community updates, all in a beautiful, easy-to-use mobile app.
             </p>
             
             <div className="promo-features">

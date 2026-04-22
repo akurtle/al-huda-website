@@ -54,7 +54,7 @@ export default function HeroSection({ nextPrayer, islamicDate }) {
             Your Trusted <span className="text-gradient">Islamic</span> Community Hub
           </h1>
           <p className="hero-subtitle">
-            Accurate prayer times, Zakaat calculations, and essential Islamic resources — all in one beautiful platform designed for the modern Muslim community.
+            Accurate prayer times, Zakaat calculations, and essential Islamic resources, all in one beautiful platform designed for the modern Muslim community.
           </p>
           <div className="hero-actions">
             <a href="#prayer-times" className="btn btn-primary btn-lg" onClick={(e) => {

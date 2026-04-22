@@ -6,7 +6,7 @@ const Announcement = require('./Announcement');
 const Donation = require('./Donation');
 
 /**
- * Model Registry — provides access to all models by collection name
+ * Model Registry - provides access to all models by collection name
  */
 const ModelRegistry = {
   users: User,

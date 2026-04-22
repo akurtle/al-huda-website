@@ -1,5 +1,5 @@
 // ========================================
-// Express.js Server — Al Huda
+// Express.js Server - Al Huda
 // ========================================
 const express = require('express');
 const cors = require('cors');

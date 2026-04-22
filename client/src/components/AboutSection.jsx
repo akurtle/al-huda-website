@@ -12,7 +12,7 @@ export default function AboutSection() {
               Al Huda is dedicated to providing the Muslim community with reliable, accurate, and beautifully designed Islamic tools and resources. Our mission is to make essential Islamic services accessible to everyone, everywhere.
             </p>
             <p className="about-text">
-              Whether you need accurate prayer times for your location, want to calculate your Zakaat obligation, or are looking to connect with your local Muslim community — Al Huda is here for you.
+              Whether you need accurate prayer times for your location, want to calculate your Zakaat obligation, or are looking to connect with your local Muslim community, Al Huda is here for you.
             </p>
             <div className="about-values">
               {[
@@ -47,7 +47,7 @@ export default function AboutSection() {
               <div className="quran-verse">
                 <p className="verse-arabic">إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا</p>
                 <p className="verse-translation">"Indeed, prayer has been decreed upon the believers a decree of specified times."</p>
-                <p className="verse-reference">— Surah An-Nisa 4:103</p>
+                <p className="verse-reference">Surah An-Nisa 4:103</p>
               </div>
             </div>
           </div>
