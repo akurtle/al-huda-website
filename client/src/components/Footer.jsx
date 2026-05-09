@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logo from '../assets/logo.png'
 import './Footer.css'
 
 export default function Footer() {
@@ -8,7 +9,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
-              <img src="/src/assets/logo.png" alt="Al Huda Islamic Centre" className="logo-img" style={{ height: '44px', width: 'auto' }} />
+              <img src={logo} alt="Al Huda Islamic Centre" className="logo-img" />
               <span className="footer-logo-text">Al-Huda Islamic Centre (AIC)</span>
             </Link>
             <p className="footer-tagline">
@@ -49,7 +50,6 @@ export default function Footer() {
               <li><Link to="/programs/ramadan">Ramadan</Link></li>
               <li><Link to="/programs/tafseer">Annual Ramadan Tafseer</Link></li>
               <li><a href="/#prayer-times">Prayer Times</a></li>
-              <li><a href="/#zakaat">Zakaat Calculator</a></li>
             </ul>
           </div>
 

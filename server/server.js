@@ -26,12 +26,10 @@ app.use((req, res, next) => {
 // Routes
 // ========================================
 const prayerRoutes = require('./routes/prayer.routes');
-const zakaatRoutes = require('./routes/zakaat.routes');
 const userRoutes = require('./routes/user.routes');
 const genericRoutes = require('./routes/generic.routes');
 
 app.use('/api/prayer', prayerRoutes);
-app.use('/api/zakaat', zakaatRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/data', genericRoutes); // Flexible generic CRUD
 

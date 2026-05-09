@@ -1,6 +1,5 @@
 const BaseModel = require('./BaseModel');
 const User = require('./User');
-const ZakaatCalculation = require('./ZakaatCalculation');
 const Event = require('./Event');
 const Announcement = require('./Announcement');
 const Donation = require('./Donation');
@@ -10,7 +9,6 @@ const Donation = require('./Donation');
  */
 const ModelRegistry = {
   users: User,
-  zakaatCalculations: ZakaatCalculation,
   events: Event,
   announcements: Announcement,
   donations: Donation,
@@ -28,7 +26,6 @@ const ModelRegistry = {
 module.exports = {
   BaseModel,
   User,
-  ZakaatCalculation,
   Event,
   Announcement,
   Donation,

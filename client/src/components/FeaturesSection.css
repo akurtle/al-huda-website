@@ -65,7 +65,7 @@
 }
 
 .feature-icon-prayer { background: linear-gradient(135deg, rgba(27,122,61,0.1), rgba(27,122,61,0.05)); color: var(--primary); }
-.feature-icon-zakaat { background: linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05)); color: var(--gold-dark); }
+.feature-icon-programs { background: var(--primary-green-100); color: var(--primary); }
 .feature-icon-community { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.05)); color: var(--info); }
 
 .feature-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem; }

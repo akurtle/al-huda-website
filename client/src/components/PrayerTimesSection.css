@@ -1,6 +1,6 @@
 .prayer-section {
-  padding: 6rem 0;
-  background: linear-gradient(180deg, var(--white) 0%, var(--green-50) 50%, var(--white) 100%);
+  padding: 120px 0;
+  background: var(--primary-green-100);
   position: relative;
   z-index: 1;
 }
@@ -9,103 +9,128 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  margin-bottom: 2.5rem;
+  gap: 16px;
+  padding: 16px 24px;
+  background: var(--neutral-white);
+  border-radius: var(--radius-full);
+  margin-bottom: 24px;
   flex-wrap: wrap;
-  gap: 1rem;
+}
+
+.location-info,
+.location-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .location-info {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--primary);
+  color: var(--primary-green-500);
   font-weight: 600;
 }
 
 .location-date {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--gray-500);
-  font-size: 0.9rem;
+  color: var(--neutral-grey-500);
+  font-size: 0.95rem;
+  font-weight: 300;
 }
 
-.date-separator { color: var(--gray-300); }
+.date-separator {
+  color: var(--neutral-grey-200);
+}
 
 .prayer-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
+  gap: 16px;
 }
 
 .prayer-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--neutral-white);
   border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
-  text-align: center;
+  padding: 24px;
   transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-.prayer-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  opacity: 0;
-  transition: opacity var(--transition-base);
 }
 
 .prayer-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--green-200);
 }
-.prayer-card:hover::after { opacity: 1; }
 
 .prayer-card.active {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-  color: var(--white);
-  border-color: transparent;
+  background: var(--primary-green-500);
+  color: var(--neutral-white);
   box-shadow: var(--shadow-green);
 }
-.prayer-card.active .prayer-card-name { color: rgba(255,255,255,0.85); }
-.prayer-card.active .prayer-card-time { color: var(--white); }
-.prayer-card.active .prayer-card-icon { color: rgba(255,255,255,0.7); }
-.prayer-card.active::after { background: var(--gold); opacity: 1; }
 
 .prayer-card-icon {
-  color: var(--primary);
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
+  color: var(--primary-green-500);
+}
+
+.prayer-card.active .prayer-card-icon {
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .prayer-card-name {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--gray-500);
+  color: var(--neutral-grey-500);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
+  margin-top: auto;
+  margin-bottom: 8px;
+}
+
+.prayer-card.active .prayer-card-name {
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .prayer-card-time {
-  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
   font-weight: 700;
-  color: var(--gray-800);
+  color: var(--neutral-black);
+  line-height: 1;
 }
 
-@media (max-width: 992px) {
-  .prayer-grid { grid-template-columns: repeat(3, 1fr); }
+.prayer-card.active .prayer-card-time {
+  color: var(--neutral-white);
 }
+
+@media (max-width: 991px) {
+  .prayer-section {
+    padding: 100px 0;
+  }
+
+  .prayer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
-  .prayer-grid { grid-template-columns: repeat(2, 1fr); }
+  .prayer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .prayer-section {
+    padding: 72px 0;
+  }
+
+  .prayer-location-bar {
+    border-radius: var(--radius-lg);
+  }
+
+  .prayer-card {
+    min-height: 170px;
+    padding: 20px;
+  }
+
+  .prayer-card-time {
+    font-size: 1.45rem;
+  }
 }

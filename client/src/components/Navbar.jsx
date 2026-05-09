@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import logo from '../assets/logo.png'
 import './Navbar.css'
 
 const navItems = [
@@ -26,6 +27,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const location = useLocation()
+  const solidNav = scrolled || location.pathname !== '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -34,8 +36,6 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    setMobileOpen(false)
-    setActiveDropdown(null)
     document.body.style.overflow = ''
   }, [location])
 
@@ -52,11 +52,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
+      <nav className={`navbar ${solidNav ? 'scrolled' : ''}`} id="navbar">
         <div className="nav-container">
           <Link to="/" className="nav-logo" id="nav-logo">
-            <img src="/src/assets/logo.png" alt="Al Huda Islamic Centre" className="logo-img" style={{ height: '44px', width: 'auto' }} />
-            <span className="logo-text">Al<span className="logo-accent">Huda</span></span>
+            <img src={logo} alt="Al Huda Islamic Centre" className="logo-img" />
+            <span className="logo-text">AL-<span className="logo-accent">HUDA</span></span>
           </Link>
 
           <ul className="nav-links">

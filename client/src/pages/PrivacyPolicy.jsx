@@ -19,7 +19,6 @@ const sections = [
         <ul>
           <li><strong>Account Information:</strong> Name, email address, and password when you create an account.</li>
           <li><strong>Profile Data:</strong> Optional information such as your city, preferred calculation method, and notification preferences.</li>
-          <li><strong>Zakaat Data:</strong> Financial information entered into the Zakaat calculator. This data is processed locally and is not stored on our servers unless you choose to save it.</li>
         </ul>
         <h4>2.2 Information Collected Automatically</h4>
         <ul>
@@ -40,7 +39,6 @@ const sections = [
         <ul>
           <li>Provide, maintain, and improve the Service</li>
           <li>Calculate and display accurate prayer times for your location</li>
-          <li>Process Zakaat calculations</li>
           <li>Send notifications (with your consent) for prayer times and important updates</li>
           <li>Analyze usage patterns to improve user experience</li>
           <li>Respond to your inquiries and provide customer support</li>

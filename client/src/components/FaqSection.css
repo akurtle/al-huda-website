@@ -1,0 +1,139 @@
+.faq-section {
+  padding: 0 0 120px;
+  background: var(--neutral-white);
+}
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 64px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.faq-header-col {
+  position: sticky;
+  top: 140px;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  border-radius: var(--radius-lg);
+  background: var(--primary-green-100);
+  overflow: hidden;
+}
+
+.faq-toggle {
+  width: 100%;
+  min-height: 84px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 28px;
+  text-align: left;
+}
+
+.faq-toggle h3 {
+  font-size: 1.05rem;
+  color: var(--neutral-black);
+}
+
+.faq-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--neutral-white);
+  flex: 0 0 auto;
+}
+
+.faq-icon-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background: var(--neutral-black);
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition-base);
+}
+
+.faq-icon-line.vertical {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item.active .faq-icon-line.vertical {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-content {
+  overflow: hidden;
+  transition: max-height var(--transition-slow);
+}
+
+.faq-content p {
+  padding: 0 28px 28px;
+  color: var(--neutral-grey-500);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.faq-reach-out-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--primary-green-100);
+}
+
+.reach-content h3 {
+  color: var(--neutral-black);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.reach-content p {
+  color: var(--primary-green-500);
+  font-weight: 300;
+}
+
+@media (max-width: 991px) {
+  .faq-section {
+    padding-bottom: 100px;
+  }
+
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .faq-header-col {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .faq-section {
+    padding-bottom: 72px;
+  }
+
+  .faq-toggle,
+  .faq-content p,
+  .faq-reach-out-card {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .faq-reach-out-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

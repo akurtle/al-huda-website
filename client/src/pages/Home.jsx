@@ -5,8 +5,7 @@ import MissionSection from '../components/MissionSection'
 import ProgramsSection from '../components/ProgramsSection'
 import PrayerTimesSection from '../components/PrayerTimesSection'
 import CommunitySection from '../components/CommunitySection'
-import AppPromoSection from '../components/AppPromoSection'
-import ZakaatSection from '../components/ZakaatSection'
+import FaqSection from '../components/FaqSection'
 import DonateCtaSection from '../components/DonateCtaSection'
 import { getUserLocation, reverseGeocode, fetchPrayerTimes, getNextPrayer } from '../services/prayerTimes'
 
@@ -56,9 +55,8 @@ export default function Home() {
         nextPrayerKey={nextPrayer?.key}
       />
       <CommunitySection />
-      <AppPromoSection />
-      <ZakaatSection />
       <DonateCtaSection />
+      <FaqSection />
     </>
   )
 }
