@@ -39,6 +39,12 @@
   background: var(--neutral-white);
   border-radius: var(--radius-lg);
   padding: 32px;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .testimonial-quote-mark {
@@ -81,6 +87,12 @@
   padding: 24px;
   margin-bottom: 16px;
   color: var(--neutral-white);
+  transition: transform var(--transition-base), background var(--transition-base);
+}
+
+.event-card:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .event-card:last-child {

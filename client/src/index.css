@@ -190,11 +190,16 @@ input, select, textarea {
   background: var(--neutral-white);
   color: var(--primary-green-500);
   flex: 0 0 auto;
+  transition: transform var(--transition-base), background var(--transition-base), color var(--transition-base);
 }
 
 .btn-outline .btn-arrow {
   background: var(--primary-green-500);
   color: var(--neutral-white);
+}
+
+.btn:hover .btn-arrow {
+  transform: translate(3px, -3px);
 }
 
 .section-header {
@@ -266,6 +271,20 @@ input, select, textarea {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+@keyframes softGlow {
+  0%, 100% { box-shadow: var(--shadow-green); }
+  50% { box-shadow: 0 18px 54px rgba(0, 128, 0, 0.32); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media (max-width: 991px) {

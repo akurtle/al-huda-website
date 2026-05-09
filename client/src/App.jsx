@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import MissionPage from './pages/MissionPage'
@@ -15,6 +16,7 @@ function App() {
     <Router>
       <div className="app">
         <div className="islamic-pattern-overlay"></div>
+        <ScrollToTop />
         <Navbar />
         <main>
           <Routes>

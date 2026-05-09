@@ -12,6 +12,12 @@
   border-radius: var(--radius-lg);
   background: var(--primary-green-500);
   color: var(--neutral-white);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.donate-cta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-green);
 }
 
 .donate-cta-content {

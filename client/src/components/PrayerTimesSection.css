@@ -65,6 +65,7 @@
   background: var(--primary-green-500);
   color: var(--neutral-white);
   box-shadow: var(--shadow-green);
+  animation: softGlow 3s ease-in-out infinite;
 }
 
 .prayer-card-icon {

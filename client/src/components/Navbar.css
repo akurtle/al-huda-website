@@ -44,6 +44,7 @@
   box-shadow: inset 0 2px rgba(255, 255, 255, 0.16);
   width: calc(100% - (var(--container-padding) * 2));
   padding: 16px;
+  animation: fadeIn 500ms ease both;
 }
 
 .navbar.scrolled .nav-container {
@@ -118,6 +119,7 @@
 .nav-link:focus-visible {
   background: var(--neutral-white);
   color: var(--primary-green-500);
+  transform: translateY(-1px);
 }
 
 .navbar.scrolled .nav-link:hover,

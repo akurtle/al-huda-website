@@ -96,6 +96,12 @@
   border-radius: var(--radius-full);
   background: var(--primary-green-500);
   color: var(--neutral-white);
+  transition: transform var(--transition-base), background var(--transition-base);
+}
+
+.program-card:hover .program-arrow {
+  transform: translate(4px, -4px);
+  background: var(--neutral-black);
 }
 
 @media (max-width: 991px) {

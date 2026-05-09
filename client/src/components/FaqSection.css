@@ -26,6 +26,12 @@
   border-radius: var(--radius-lg);
   background: var(--primary-green-100);
   overflow: hidden;
+  transition: transform var(--transition-base), background var(--transition-base);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  background: #f1f1ed;
 }
 
 .faq-toggle {
