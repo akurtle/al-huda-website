@@ -56,7 +56,7 @@ export default function Navbar() {
         <div className="nav-container">
           <Link to="/" className="nav-logo" id="nav-logo">
             <img src={logo} alt="Al Huda Islamic Centre" className="logo-img" />
-            <span className="logo-text">AL-<span className="logo-accent">HUDA</span></span>
+            <span className="logo-text">AIC<span className="logo-accent"></span></span>
           </Link>
 
           <ul className="nav-links">
