@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import HeroSection from '../components/HeroSection'
-import AppPromoSection from '../components/AppPromoSection'
-import FeaturesSection from '../components/FeaturesSection'
-import PrayerTimesSection from '../components/PrayerTimesSection'
-import ZakaatSection from '../components/ZakaatSection'
 import AboutSection from '../components/AboutSection'
+import MissionSection from '../components/MissionSection'
+import ProgramsSection from '../components/ProgramsSection'
+import PrayerTimesSection from '../components/PrayerTimesSection'
+import CommunitySection from '../components/CommunitySection'
+import AppPromoSection from '../components/AppPromoSection'
+import ZakaatSection from '../components/ZakaatSection'
+import DonateCtaSection from '../components/DonateCtaSection'
 import { getUserLocation, reverseGeocode, fetchPrayerTimes, getNextPrayer } from '../services/prayerTimes'
 
 export default function Home() {
@@ -42,8 +45,9 @@ export default function Home() {
         nextPrayer={nextPrayer}
         islamicDate={prayerData?.hijri}
       />
-      <AppPromoSection />
-      <FeaturesSection />
+      <AboutSection />
+      <MissionSection />
+      <ProgramsSection />
       <PrayerTimesSection
         times={prayerData?.times}
         location={location}
@@ -51,8 +55,10 @@ export default function Home() {
         gregorianDate={prayerData?.gregorian}
         nextPrayerKey={nextPrayer?.key}
       />
+      <CommunitySection />
+      <AppPromoSection />
       <ZakaatSection />
-      <AboutSection />
+      <DonateCtaSection />
     </>
   )
 }
