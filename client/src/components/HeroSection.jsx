@@ -42,11 +42,11 @@ export default function HeroSection({ nextPrayer, islamicDate }) {
 
         <div className="hero-bottom">
           <div className="hero-stat-card">
-            <span className="stat-number">10+</span>
+            <span className="stat-number">5+</span>
             <span className="stat-label">Years Serving</span>
           </div>
           <div className="hero-stat-card">
-            <span className="stat-number">5k+</span>
+            <span className="stat-number">2k+</span>
             <span className="stat-label">Community Members</span>
           </div>
           <div className="hero-prayer-card">

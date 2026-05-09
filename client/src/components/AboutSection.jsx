@@ -25,7 +25,7 @@ export default function AboutSection() {
         <div className="about-editorial-grid">
           <div className="about-number-card">
             <div>
-              <span className="about-badge-number">10+</span>
+              <span className="about-badge-number">5+</span>
               <span className="about-badge-text">Years of Service</span>
             </div>
             <p>Serving Muslims in Newfoundland with education, worship, and community support.</p>
