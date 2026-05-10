@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import HeroSection from '../components/HeroSection'
 import AboutSection from '../components/AboutSection'
 import MissionSection from '../components/MissionSection'
@@ -9,27 +9,52 @@ import FaqSection from '../components/FaqSection'
 import DonateCtaSection from '../components/DonateCtaSection'
 import { getUserLocation, reverseGeocode, fetchPrayerTimes, getNextPrayer } from '../services/prayerTimes'
 
+const CACHE_KEY = 'aic_prayer_cache'
+
+function readCache() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY)
+    if (!raw) return null
+    const { date, data, locationStr } = JSON.parse(raw)
+    if (date !== new Date().toDateString()) return null
+    return { data, locationStr }
+  } catch {
+    return null
+  }
+}
+
+function writeCache(data, locationStr) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({
+      date: new Date().toDateString(),
+      data,
+      locationStr,
+    }))
+  } catch {}
+}
+
 export default function Home() {
-  const [prayerData, setPrayerData] = useState(null)
-  const [location, setLocation] = useState('')
-  const [nextPrayer, setNextPrayer] = useState(null)
+  const cache = useRef(readCache()).current
+  const [prayerData, setPrayerData] = useState(cache?.data ?? null)
+  const [location, setLocation] = useState(cache?.locationStr ?? '')
+  const [nextPrayer, setNextPrayer] = useState(cache ? getNextPrayer(cache.data.timesRaw) : null)
 
   useEffect(() => {
     async function init() {
       const coords = await getUserLocation()
-      const geo = await reverseGeocode(coords.lat, coords.lng)
-      setLocation(`${geo.city}, ${geo.country}`)
-
-      const data = await fetchPrayerTimes(coords.lat, coords.lng)
+      const [geo, data] = await Promise.all([
+        reverseGeocode(coords.lat, coords.lng),
+        fetchPrayerTimes(coords.lat, coords.lng),
+      ])
+      const locationStr = `${geo.city}, ${geo.country}`
+      setLocation(locationStr)
       setPrayerData(data)
-
-      const next = getNextPrayer(data.timesRaw)
-      setNextPrayer(next)
+      setNextPrayer(getNextPrayer(data.timesRaw))
+      writeCache(data, locationStr)
     }
     init()
   }, [])
 
-  // Update countdown every minute
   useEffect(() => {
     if (!prayerData) return
     const interval = setInterval(() => {

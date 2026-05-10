@@ -12,7 +12,7 @@ export async function getUserLocation() {
     navigator.geolocation.getCurrentPosition(
       pos => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
       () => resolve({ lat: 40.7128, lng: -74.006 }),
-      { timeout: 10000, maximumAge: 300000 }
+      { timeout: 5000, maximumAge: 300000 }
     )
   })
 }

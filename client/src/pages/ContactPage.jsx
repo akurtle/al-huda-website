@@ -1,19 +1,7 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../pages/PageStyles.css'
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // In production, this would send to a backend
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 4000)
-    setForm({ name: '', email: '', subject: '', message: '' })
-  }
-
   return (
     <>
       <section className="page-hero">
@@ -89,70 +77,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="contact-form">
-              <h3>Send Us a Message</h3>
-              {submitted && (
-                <div style={{
-                  padding: '0.75rem 1rem',
-                  background: 'rgba(16, 185, 129, 0.1)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  borderRadius: 'var(--radius-md)',
-                  color: 'var(--success)',
-                  fontWeight: 600,
-                  fontSize: '0.9rem',
-                  marginBottom: '1.25rem',
-                }}>
-                  ✓ Message sent successfully! We'll get back to you soon.
-                </div>
-              )}
-              <form onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-field">
-                    <label htmlFor="contact-name">Full Name</label>
-                    <input 
-                      type="text" id="contact-name" required
-                      value={form.name}
-                      onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="form-field">
-                    <label htmlFor="contact-email">Email</label>
-                    <input 
-                      type="email" id="contact-email" required
-                      value={form.email}
-                      onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-                <div className="form-field">
-                  <label htmlFor="contact-subject">Subject</label>
-                  <input 
-                    type="text" id="contact-subject" required
-                    value={form.subject}
-                    onChange={e => setForm(p => ({ ...p, subject: e.target.value }))}
-                    placeholder="How can we help?"
-                  />
-                </div>
-                <div className="form-field">
-                  <label htmlFor="contact-message">Message</label>
-                  <textarea 
-                    id="contact-message" required
-                    value={form.message}
-                    onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                    placeholder="Your message..."
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary btn-lg btn-full">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
-                  Send Message
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       </section>
