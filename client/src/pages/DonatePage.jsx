@@ -70,7 +70,7 @@ export default function DonatePage() {
                   </svg>
                   Interac
                 </span>
-                <span className="donate-option-value">masjidulhuda@al-hudacentre.ca</span>
+                <span className="donate-option-value">ahislamiccentre@gmail.com</span>
               </div>
 
               <div className="donate-option-item">
