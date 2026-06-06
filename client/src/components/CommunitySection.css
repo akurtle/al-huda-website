@@ -84,6 +84,7 @@
 .event-card {
   background: rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
+  overflow: hidden;
   padding: 24px;
   margin-bottom: 16px;
   color: var(--neutral-white);
@@ -101,6 +102,22 @@
 
 .event-card h4 {
   color: var(--neutral-white);
+}
+
+.event-card-muted {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.event-card-muted:hover {
+  transform: none;
+}
+
+.event-image {
+  display: block;
+  width: calc(100% + 48px);
+  height: 180px;
+  object-fit: cover;
+  margin: -24px -24px 20px;
 }
 
 .event-badge {
@@ -125,6 +142,11 @@
 .event-detail {
   color: rgba(255, 255, 255, 0.76);
   font-weight: 300;
+}
+
+.event-desc {
+  line-height: 1.65;
+  margin-bottom: 16px;
 }
 
 .event-details {
