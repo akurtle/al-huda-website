@@ -1,4 +1,5 @@
 import './FeaturedEventSection.css'
+import campImage from '../assets/spring-event.png'
 
 const ZEFFY_URL =
   'https://www.zeffy.com/en-CA/ticketing/al-huda-islamic-centre-summer-camp-and-family-retreat--2026-2'
@@ -7,10 +8,12 @@ export default function FeaturedEventSection() {
   return (
     <section className="featured-event" id="summer-camp-2026">
       <div className="container">
-        <div className="featured-event-card">
+        <div
+          className="featured-event-card"
+          style={{ backgroundImage: `url(${campImage})` }}
+        >
           <div className="featured-event-content">
             <span className="section-tag">Featured Event</span>
-            <h2>First Summer Camp &amp; Family Retreat 2026</h2>
             <p className="featured-event-theme">
               Faith, Family, and Fellowship: Growing Together for the Sake of Allah
             </p>
