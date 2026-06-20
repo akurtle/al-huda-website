@@ -1,5 +1,47 @@
+import { useState, useEffect } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import heroImage from '../assets/onearth-inspired/hero-prayer.jpg'
 import './HeroSection.css'
+
+const MotionSpan = motion.span
+const ROTATING_WORDS = ['Dialogue', 'Knowledge', 'Prayer', 'Service', 'Belonging']
+const LONGEST_WORD = ROTATING_WORDS.reduce((a, b) => (b.length > a.length ? b : a))
+
+function RotatingWord() {
+  const reduceMotion = useReducedMotion()
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    if (reduceMotion) return
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % ROTATING_WORDS.length)
+    }, 2600)
+    return () => clearInterval(id)
+  }, [reduceMotion])
+
+  if (reduceMotion) {
+    return <span className="rotating-word">{ROTATING_WORDS[0]}</span>
+  }
+
+  return (
+    <span className="rotating-word">
+      {/* Invisible sizer reserves the widest word's width so the rest of the line never reflows. */}
+      <span className="rotating-word-sizer" aria-hidden="true">{LONGEST_WORD}</span>
+      <AnimatePresence initial={false}>
+        <MotionSpan
+          key={ROTATING_WORDS[index]}
+          className="rotating-word-item"
+          initial={{ y: '100%', opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: '-100%', opacity: 0 }}
+          transition={{ type: 'spring', stiffness: 140, damping: 20 }}
+        >
+          {ROTATING_WORDS[index]}
+        </MotionSpan>
+      </AnimatePresence>
+    </span>
+  )
+}
 
 export default function HeroSection({ nextPrayer, islamicDate }) {
   const gregorianDate = new Date().toLocaleDateString('en-US', {
@@ -18,7 +60,9 @@ export default function HeroSection({ nextPrayer, islamicDate }) {
               <span className="badge-dot" />
               <span>Al-Huda Islamic Centre (AIC)</span>
             </div>
-            <h1 className="hero-title">Faith, Dialogue, and Community in Newfoundland</h1>
+            <h1 className="hero-title">
+              Faith, <RotatingWord />, and Community in Newfoundland
+            </h1>
           </div>
 
           <div className="hero-subheading">
