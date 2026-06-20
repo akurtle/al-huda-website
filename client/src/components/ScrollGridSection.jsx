@@ -25,8 +25,8 @@ const LAYER_1 = [
     alt: 'Al-Huda community members gathered on prayer mats.',
   },
   {
-    src: unsplashImage('photo-1771536145073-b79d8d6ab218'),
-    alt: 'Rows of worshippers praying together in congregation.',
+    src: unsplashImage('photo-1773958731767-6429d39d9efb'),
+    alt: 'Hands making du\'a over a Ramadan iftar table.',
   },
   {
     src: unsplashImage('photo-1637034120715-cdd8f1c9347d'),
@@ -101,7 +101,7 @@ export default function ScrollGridSection() {
     const coverScale = Math.max(
       window.innerWidth / naturalWidth,
       window.innerHeight / naturalHeight,
-    )
+    ) * 0.5
 
     const stoppers = []
 
