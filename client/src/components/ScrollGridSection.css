@@ -1,0 +1,218 @@
+/* ScrollGridSection - scroll-linked zoom-out grid (light brand theme).
+   Animation mechanics ported from https://codepen.io/KevinGutowski/pen/QwNZYzL
+   (orig. Jhey). All selectors scoped under .scroll-grid. */
+
+.scroll-grid {
+  --sg-gutter: var(--container-padding);
+  background: var(--neutral-white);
+  color: var(--neutral-black);
+  overflow: clip;
+}
+
+/* Intro (before the zoom) */
+.scroll-grid .sg-header {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+}
+
+.scroll-grid .sg-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  align-items: end;
+  gap: 64px;
+}
+
+.scroll-grid .sg-intro .section-title {
+  margin-bottom: 0;
+  max-width: 900px;
+}
+
+.scroll-grid .sg-intro-lead {
+  color: var(--neutral-grey-500);
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+/* Pinned scroll stage */
+.scroll-grid .sg-scroll {
+  min-height: 240vh; /* extra height for scroll space */
+}
+
+.scroll-grid .content {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  place-items: center;
+  align-content: center;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+/* Outro (after the grid assembles) */
+.scroll-grid .sg-outro {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+}
+
+.scroll-grid .sg-outro-inner {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.scroll-grid .sg-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+  background: var(--primary-green-100);
+  border-radius: var(--radius-lg);
+}
+
+.scroll-grid .sg-badge-number {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--primary-green-500);
+}
+
+.scroll-grid .sg-badge-text {
+  color: var(--primary-green-500);
+  font-weight: 600;
+}
+
+.scroll-grid .sg-work h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  color: var(--neutral-black);
+  margin: 8px 0 16px;
+}
+
+.scroll-grid .sg-work p {
+  max-width: 560px;
+  margin-bottom: 24px;
+  color: var(--neutral-grey-500);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Grid layout - 5 columns x 3 rows */
+.scroll-grid .grid {
+  --offset: 0;
+  --container-width: 1600px;
+  --gap: clamp(10px, 7.35vw, 80px);
+
+  width: var(--container-width);
+  max-width: calc(100% - (2 * var(--sg-gutter)));
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: var(--gap);
+  margin: 0 auto;
+  align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@media (max-width: 600px) {
+  .scroll-grid .grid {
+    grid-template-columns: repeat(3, 1fr);
+    --offset: -1;
+  }
+
+  .scroll-grid .grid > .layer:nth-of-type(1) {
+    display: none;
+  }
+}
+
+/* Layers using subgrid */
+.scroll-grid .grid > .layer {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+
+/* Layer 1: outer edges - odd on left column, even on right column */
+.scroll-grid .grid > .layer:nth-of-type(1) div:nth-of-type(odd) {
+  grid-column: 1;
+}
+
+.scroll-grid .grid > .layer:nth-of-type(1) div:nth-of-type(even) {
+  grid-column: -2;
+}
+
+/* Layer 2: inner columns */
+.scroll-grid .grid > .layer:nth-of-type(2) div:nth-of-type(odd) {
+  grid-column: calc(2 + var(--offset));
+}
+
+.scroll-grid .grid > .layer:nth-of-type(2) div:nth-of-type(even) {
+  grid-column: calc(-3 - var(--offset));
+}
+
+/* Layer 3: center column top and bottom */
+.scroll-grid .grid > .layer:nth-of-type(3) div:first-of-type {
+  grid-column: calc(3 + var(--offset));
+  grid-row: 1;
+}
+
+.scroll-grid .grid > .layer:nth-of-type(3) div:last-of-type {
+  grid-column: calc(3 + var(--offset));
+  grid-row: -1;
+}
+
+.scroll-grid .grid img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.scroll-grid .grid .scaler {
+  position: relative;
+  grid-area: 2 / calc(3 + var(--offset));
+}
+
+.scroll-grid .scaler {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.scroll-grid .scaler img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 991px) {
+  .scroll-grid .sg-intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .scroll-grid .sg-outro-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
