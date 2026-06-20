@@ -8,8 +8,8 @@ const MotionDiv = motion.div
 export default function LampHeroSection() {
   const reduceMotion = useReducedMotion()
 
-  const anim = (initial, whileInView) =>
-    reduceMotion ? {} : { initial, whileInView, viewport: { once: true }, transition: { ease: 'easeInOut', delay: 0.3, duration: 0.8 } }
+  const anim = (initial, whileInView, delay = 0.1) =>
+    reduceMotion ? {} : { initial, whileInView, viewport: { once: true, amount: 0.4 }, transition: { ease: 'easeOut', delay, duration: 0.9 } }
 
   return (
     <section className="lamp-hero" id="summer-camp-2026">
@@ -18,35 +18,29 @@ export default function LampHeroSection() {
 
       {/* Lamp glow */}
       <div className="lamp-glow-wrap">
-        {/* Left cone */}
+        {/* Soft spotlight — radial glow spreading down from the top center */}
         <MotionDiv
-          className="lamp-cone-left"
-          style={{ backgroundImage: 'conic-gradient(from 70deg at center top, rgba(20,200,185,0.45), transparent 55%)' }}
-          {...anim({ opacity: 0.5, width: '15rem' }, { opacity: 1, width: '30rem' })}
+          className="lamp-glow"
+          {...anim({ opacity: 0, width: '22rem' }, { opacity: 1, width: '48rem' }, 0.1)}
         />
 
-        {/* Right cone */}
+        {/* Bright core directly under the line */}
         <MotionDiv
-          className="lamp-cone-right"
-          style={{ backgroundImage: 'conic-gradient(from 290deg at center top, transparent 45%, rgba(20,200,185,0.45))' }}
-          {...anim({ opacity: 0.5, width: '15rem' }, { opacity: 1, width: '30rem' })}
+          className="lamp-core"
+          {...anim({ opacity: 0, width: '10rem' }, { opacity: 1, width: '20rem' }, 0.1)}
         />
 
-        {/* Blob glow (static) */}
-        <div className="lamp-blob" />
-
-        {/* Horizontal line */}
+        {/* Bright glowing line at the very top edge */}
         <MotionDiv
           className="lamp-line"
-          {...anim({ width: '15rem' }, { width: '30rem' })}
+          {...anim({ width: '8rem', opacity: 0.4 }, { width: '32rem', opacity: 1 }, 0.1)}
         />
-
       </div>
 
-      {/* Content */}
+      {/* Content — rises up after the lamp turns on */}
       <MotionDiv
         className="lamp-content"
-        {...anim({ y: 100, opacity: 0.5 }, { y: 0, opacity: 1 })}
+        {...anim({ y: 90, opacity: 0 }, { y: 0, opacity: 1 }, 0.45)}
       >
         <span className="lamp-tag">Featured Event</span>
 

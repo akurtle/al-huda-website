@@ -28,53 +28,58 @@
   );
 }
 
-/* Glow wrap — covers top 52% of section */
+/* Glow wrap — covers the top portion of the section */
 .lamp-glow-wrap {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 52%;
+  height: 60%;
   pointer-events: none;
 }
 
-/* Blob */
-.lamp-blob {
+/* Soft spotlight — radial glow spreading down from top center.
+   width is animated by motion; this value is the reduced-motion fallback. */
+.lamp-glow {
   position: absolute;
-  top: -10%;
+  top: -5rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 28rem;
-  height: 9rem;
-  background: rgba(20, 200, 185, 0.55);
-  border-radius: 50%;
-  filter: blur(3rem);
+  height: 26rem;
+  width: 48rem;
+  background: radial-gradient(
+    ellipse 50% 50% at 50% 0%,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.2) 38%,
+    transparent 68%
+  );
 }
 
-/* Horizontal line — animated width via motion */
+/* Bright core directly under the line — soft blurred hotspot */
+.lamp-core {
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 7rem;
+  width: 20rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  filter: blur(2.5rem);
+}
+
+/* Bright glowing line at the very top edge */
 .lamp-line {
   position: absolute;
-  bottom: 2%;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   height: 2px;
-  width: 30rem;
+  width: 32rem;
   border-radius: 9999px;
-  background: rgba(20, 200, 185, 0.85);
-  box-shadow: 0 0 12px rgba(20, 200, 185, 0.6);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 18px 2px rgba(255, 255, 255, 0.7);
 }
-
-/* Cones */
-.lamp-cone-left,
-.lamp-cone-right {
-  position: absolute;
-  top: 0;
-  height: 14rem;
-  width: 30rem;
-  overflow: hidden;
-}
-.lamp-cone-left  { right: 50%; }
-.lamp-cone-right { left:  50%; }
 
 
 /* Content */
@@ -87,7 +92,7 @@
   text-align: center;
   padding: 0 var(--spacing-lg, 2rem);
   gap: var(--spacing-md, 1rem);
-  margin-top: 5rem;
+  margin-top: 10rem;
 }
 
 /* Tag */
@@ -96,11 +101,11 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(20, 200, 185, 0.85);
-  border: 1px solid rgba(20, 200, 185, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   padding: 4px 16px;
   border-radius: 9999px;
-  background: rgba(20, 200, 185, 0.07);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Title */
@@ -159,6 +164,6 @@
   background: #1a1a1a;
 }
 .lamp-btn:focus-visible {
-  outline: 2px solid rgba(20, 200, 185, 0.85);
+  outline: 2px solid rgba(255, 255, 255, 0.85);
   outline-offset: 3px;
 }
