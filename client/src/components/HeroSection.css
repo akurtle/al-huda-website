@@ -68,6 +68,29 @@
   animation: fadeInUp 800ms ease 120ms both;
 }
 
+.rotating-word {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* Padding + negative margin gives descenders (g, y) room without clipping,
+     while keeping the baseline aligned with the surrounding text. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.rotating-word-sizer {
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.rotating-word-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+}
+
 .hero-subheading {
   width: min(520px, 36vw);
   display: flex;

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import HeroSection from '../components/HeroSection'
 import FeaturedEventSection from '../components/FeaturedEventSection'
-import AboutSection from '../components/AboutSection'
+import ScrollGridSection from '../components/ScrollGridSection'
 import MissionSection from '../components/MissionSection'
 import ProgramsSection from '../components/ProgramsSection'
 import PrayerTimesSection from '../components/PrayerTimesSection'
@@ -71,7 +71,7 @@ export default function Home() {
         islamicDate={prayerData?.hijri}
       />
       <FeaturedEventSection />
-      <AboutSection />
+      <ScrollGridSection />
       <MissionSection />
       <ProgramsSection />
       <PrayerTimesSection
