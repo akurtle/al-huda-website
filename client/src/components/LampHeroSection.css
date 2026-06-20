@@ -1,0 +1,204 @@
+.lamp-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #040c0a;
+}
+
+/* Background photo */
+.lamp-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.lamp-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 12, 10, 0.78) 0%,
+    rgba(4, 12, 10, 0.55) 45%,
+    rgba(4, 12, 10, 0.92) 100%
+  );
+}
+
+/* Glow wrap — covers top 52% of section */
+.lamp-glow-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  pointer-events: none;
+}
+
+/* Blob */
+.lamp-blob {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28rem;
+  height: 9rem;
+  background: rgba(20, 200, 185, 0.55);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+/* Horizontal line — animated width via motion */
+.lamp-line {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 30rem;
+  border-radius: 9999px;
+  background: rgba(20, 200, 185, 0.85);
+  box-shadow: 0 0 12px rgba(20, 200, 185, 0.6);
+}
+
+/* Cones */
+.lamp-cone-left,
+.lamp-cone-right {
+  position: absolute;
+  top: 0;
+  height: 14rem;
+  width: 30rem;
+  overflow: hidden;
+}
+.lamp-cone-left  { right: 50%; }
+.lamp-cone-right { left:  50%; }
+
+/* Cone edge masks */
+.lamp-cone-mask-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10rem;
+  background: linear-gradient(to top, #040c0a, transparent);
+}
+.lamp-cone-mask-inner {
+  position: absolute;
+  top: 0;
+  width: 2.5rem;
+  height: 100%;
+}
+.lamp-cone-mask-inner--left {
+  left: 0;
+  background: linear-gradient(to right, #040c0a, transparent);
+}
+.lamp-cone-mask-inner--right {
+  right: 0;
+  background: linear-gradient(to left, #040c0a, transparent);
+}
+
+/* Bottom fade */
+.lamp-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, #040c0a, transparent);
+}
+
+/* Content */
+.lamp-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--spacing-lg, 2rem);
+  gap: var(--spacing-md, 1rem);
+  margin-top: 5rem;
+}
+
+/* Tag */
+.lamp-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(20, 200, 185, 0.85);
+  border: 1px solid rgba(20, 200, 185, 0.35);
+  padding: 4px 16px;
+  border-radius: 9999px;
+  background: rgba(20, 200, 185, 0.07);
+}
+
+/* Title */
+.lamp-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+/* Subtitle */
+.lamp-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 38rem;
+  line-height: 1.65;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Meta */
+.lamp-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+.lamp-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.lamp-meta-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(20, 200, 185, 0.6);
+  flex-shrink: 0;
+}
+
+/* CTA Button — black, not teal */
+.lamp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: var(--radius-md, 8px);
+  background: #000;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background var(--transition-fast, 150ms);
+}
+.lamp-btn:hover {
+  background: #1a1a1a;
+}
+.lamp-btn:focus-visible {
+  outline: 2px solid rgba(20, 200, 185, 0.85);
+  outline-offset: 3px;
+}
