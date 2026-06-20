@@ -3,6 +3,7 @@ import campBg from '../assets/summer-camp-bg.jpg'
 import './LampHeroSection.css'
 
 const ZEFFY_URL = 'https://www.zeffy.com/en-CA/ticketing/al-huda-islamic-centre-summer-camp-and-family-retreat--2026-2'
+const MotionDiv = motion.div
 
 export default function LampHeroSection() {
   const reduceMotion = useReducedMotion()
@@ -18,40 +19,32 @@ export default function LampHeroSection() {
       {/* Lamp glow */}
       <div className="lamp-glow-wrap">
         {/* Left cone */}
-        <motion.div
+        <MotionDiv
           className="lamp-cone-left"
           style={{ backgroundImage: 'conic-gradient(from 70deg at center top, rgba(20,200,185,0.45), transparent 55%)' }}
           {...anim({ opacity: 0.5, width: '15rem' }, { opacity: 1, width: '30rem' })}
-        >
-          <div className="lamp-cone-mask-bottom" />
-          <div className="lamp-cone-mask-inner lamp-cone-mask-inner--left" />
-        </motion.div>
+        />
 
         {/* Right cone */}
-        <motion.div
+        <MotionDiv
           className="lamp-cone-right"
           style={{ backgroundImage: 'conic-gradient(from 290deg at center top, transparent 45%, rgba(20,200,185,0.45))' }}
           {...anim({ opacity: 0.5, width: '15rem' }, { opacity: 1, width: '30rem' })}
-        >
-          <div className="lamp-cone-mask-bottom" />
-          <div className="lamp-cone-mask-inner lamp-cone-mask-inner--right" />
-        </motion.div>
+        />
 
         {/* Blob glow (static) */}
         <div className="lamp-blob" />
 
         {/* Horizontal line */}
-        <motion.div
+        <MotionDiv
           className="lamp-line"
           {...anim({ width: '15rem' }, { width: '30rem' })}
         />
 
-        {/* Bottom fade */}
-        <div className="lamp-fade" />
       </div>
 
       {/* Content */}
-      <motion.div
+      <MotionDiv
         className="lamp-content"
         {...anim({ y: 100, opacity: 0.5 }, { y: 0, opacity: 1 })}
       >
@@ -95,7 +88,7 @@ export default function LampHeroSection() {
             <path d="M7 17L17 7M17 7H7M17 7V17" />
           </svg>
         </a>
-      </motion.div>
+      </MotionDiv>
     </section>
   )
 }

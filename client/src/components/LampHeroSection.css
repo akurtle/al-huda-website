@@ -76,39 +76,6 @@
 .lamp-cone-left  { right: 50%; }
 .lamp-cone-right { left:  50%; }
 
-/* Cone edge masks */
-.lamp-cone-mask-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 10rem;
-  background: linear-gradient(to top, #040c0a, transparent);
-}
-.lamp-cone-mask-inner {
-  position: absolute;
-  top: 0;
-  width: 2.5rem;
-  height: 100%;
-}
-.lamp-cone-mask-inner--left {
-  left: 0;
-  background: linear-gradient(to right, #040c0a, transparent);
-}
-.lamp-cone-mask-inner--right {
-  right: 0;
-  background: linear-gradient(to left, #040c0a, transparent);
-}
-
-/* Bottom fade */
-.lamp-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60%;
-  background: linear-gradient(to top, #040c0a, transparent);
-}
 
 /* Content */
 .lamp-content {
@@ -170,13 +137,6 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-}
-.lamp-meta-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(20, 200, 185, 0.6);
-  flex-shrink: 0;
 }
 
 /* CTA Button — black, not teal */
