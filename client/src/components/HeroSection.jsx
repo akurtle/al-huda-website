@@ -27,14 +27,14 @@ function RotatingWord() {
     <span className="rotating-word">
       {/* Invisible sizer reserves the widest word's width so the rest of the line never reflows. */}
       <span className="rotating-word-sizer" aria-hidden="true">{LONGEST_WORD}</span>
-      <AnimatePresence initial={false}>
+      <AnimatePresence mode="wait" initial={false}>
         <MotionSpan
           key={ROTATING_WORDS[index]}
           className="rotating-word-item"
-          initial={{ y: '100%', opacity: 0 }}
+          initial={{ y: 8, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: '-100%', opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 140, damping: 20 }}
+          exit={{ y: -8, opacity: 0 }}
+          transition={{ duration: 0.32, ease: 'easeOut' }}
         >
           {ROTATING_WORDS[index]}
         </MotionSpan>
@@ -61,7 +61,9 @@ export default function HeroSection({ nextPrayer, islamicDate }) {
               <span>Al-Huda Islamic Centre (AIC)</span>
             </div>
             <h1 className="hero-title">
-              Faith, <RotatingWord />, and Community in Newfoundland
+              Faith, <RotatingWord />
+              <br />
+              and community in Newfoundland
             </h1>
           </div>
 

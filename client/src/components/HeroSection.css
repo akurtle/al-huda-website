@@ -70,13 +70,12 @@
 
 .rotating-word {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  /* Padding + negative margin gives descenders (g, y) room without clipping,
-     while keeping the baseline aligned with the surrounding text. */
-  padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
+  /* Tight line-height keeps the clip box close to the glyphs so the sliding
+     word is masked top and bottom; 1.15 leaves room for descenders (g, y). */
+  line-height: 1.15;
 }
 
 .rotating-word-sizer {
@@ -88,6 +87,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  line-height: 1.15;
   white-space: nowrap;
 }
 
