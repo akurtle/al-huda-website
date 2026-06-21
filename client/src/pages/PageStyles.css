@@ -4,10 +4,21 @@
 
 .page-hero {
   padding: calc(var(--nav-height) + 72px) 0 72px;
-  background: var(--primary-green-500);
+  background:
+    radial-gradient(120% 140% at 100% 0%, var(--brand-light) 0%, transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, var(--brand-darker) 0%, transparent 60%),
+    var(--brand);
   color: var(--neutral-white);
   position: relative;
   overflow: hidden;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 80% at 85% 15%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .page-hero .container {
@@ -22,7 +33,7 @@
 .page-hero-title {
   max-width: 850px;
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  font-size: var(--fs-page);
   font-weight: 700;
   margin-bottom: 24px;
   line-height: 1.08;
@@ -75,13 +86,13 @@
 }
 
 .page-content h2 {
-  font-size: 2rem;
+  font-size: var(--fs-h2);
   font-weight: 700;
   margin: 48px 0 16px;
 }
 
 .page-content h3 {
-  font-size: 1.45rem;
+  font-size: var(--fs-h3);
   font-weight: 700;
   margin: 36px 0 12px;
 }

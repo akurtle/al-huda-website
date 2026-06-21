@@ -1,5 +1,5 @@
 .community-section {
-  padding: 120px 0;
+  padding: var(--space-section) 0;
   background: var(--neutral-white);
 }
 
@@ -61,7 +61,7 @@
 .testimonial-card h4,
 .event-card h4 {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: var(--fs-card-title);
   line-height: 1.25;
   color: var(--neutral-black);
   margin-bottom: 16px;
@@ -92,7 +92,7 @@
 }
 
 .event-card:hover {
-  transform: translateX(4px);
+  transform: translateY(-4px);
   background: rgba(255, 255, 255, 0.16);
 }
 

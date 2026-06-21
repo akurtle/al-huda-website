@@ -1,5 +1,5 @@
 .app-promo-section {
-  padding: 8rem 0;
+  padding: var(--space-section) 0;
   background: var(--white);
   position: relative;
   overflow: hidden;

@@ -1,5 +1,5 @@
 .faq-section {
-  padding: 0 0 120px;
+  padding: var(--space-section) 0;
   background: var(--neutral-white);
 }
 
@@ -31,7 +31,7 @@
 
 .faq-item:hover {
   transform: translateY(-2px);
-  background: #f1f1ed;
+  background: var(--surface-2);
 }
 
 .faq-toggle {
@@ -113,7 +113,7 @@
 
 @media (max-width: 991px) {
   .faq-section {
-    padding-bottom: 100px;
+    padding: 100px 0;
   }
 
   .faq-layout {
@@ -128,7 +128,7 @@
 
 @media (max-width: 640px) {
   .faq-section {
-    padding-bottom: 72px;
+    padding: 72px 0;
   }
 
   .faq-toggle,

@@ -1,5 +1,5 @@
 .features-section {
-  padding: 6rem 0;
+  padding: var(--space-section) 0;
   position: relative;
   z-index: 1;
 }
@@ -64,9 +64,9 @@
   margin-bottom: 1.5rem;
 }
 
-.feature-icon-prayer { background: linear-gradient(135deg, rgba(27,122,61,0.1), rgba(27,122,61,0.05)); color: var(--primary); }
-.feature-icon-programs { background: var(--primary-green-100); color: var(--primary); }
-.feature-icon-community { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.05)); color: var(--info); }
+.feature-icon-prayer { background: var(--surface-2); color: var(--brand); }
+.feature-icon-programs { background: var(--surface-2); color: var(--brand); }
+.feature-icon-community { background: var(--accent-soft); color: var(--accent-dark); }
 
 .feature-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem; }
 .feature-card p { color: var(--gray-500); line-height: 1.7; margin-bottom: 1.5rem; }

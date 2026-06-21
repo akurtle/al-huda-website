@@ -1,5 +1,5 @@
 .donate-cta-section {
-  padding: 120px 0;
+  padding: var(--space-section) 0;
   background: var(--neutral-white);
 }
 
