@@ -3,15 +3,17 @@ const API_BASE = 'https://api.aladhan.com/v1'
 /**
  * Get user's current location coordinates
  */
+const DEFAULT_COORDS = { lat: 47.5615, lng: -52.7126 } // St. John's, NL
+
 export async function getUserLocation() {
   return new Promise((resolve) => {
     if (!navigator.geolocation) {
-      resolve({ lat: 40.7128, lng: -74.006 })
+      resolve(DEFAULT_COORDS)
       return
     }
     navigator.geolocation.getCurrentPosition(
       pos => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      () => resolve({ lat: 40.7128, lng: -74.006 }),
+      () => resolve(DEFAULT_COORDS),
       { timeout: 5000, maximumAge: 300000 }
     )
   })
