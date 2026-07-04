@@ -11,9 +11,10 @@
 
 /* Intro (before the zoom) */
 .scroll-grid .sg-header {
-  min-height: 100vh;
+  min-height: 60vh;
   display: grid;
   align-content: center;
+  padding: var(--space-section) 0 48px;
 }
 
 .scroll-grid .sg-intro {
@@ -39,7 +40,7 @@
 .scroll-grid .sg-scroll {
   /* Total scroll distance the reveal is mapped onto. Taller = the animation
      advances less per scroll tick, so the grid reveals slower and lingers. */
-  min-height: 320vh;
+  min-height: 180vh;
 }
 
 .scroll-grid .content {
@@ -55,9 +56,31 @@
 
 /* Outro (after the grid assembles) */
 .scroll-grid .sg-outro {
-  min-height: 100vh;
   display: grid;
   align-content: center;
+  padding: var(--space-section) 0;
+}
+
+/* Static fallback (reduced motion / small screens): grid rendered assembled */
+.scroll-grid.sg-static .sg-scroll {
+  min-height: auto;
+}
+
+.scroll-grid.sg-static .content {
+  position: static;
+  min-height: auto;
+  width: auto;
+  padding: 48px 0;
+}
+
+.scroll-grid.sg-static .grid {
+  position: static;
+  translate: none;
+}
+
+.scroll-grid.sg-static .grid > .layer {
+  transform: none !important;
+  opacity: 1 !important;
 }
 
 .scroll-grid .sg-outro-inner {

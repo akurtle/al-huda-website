@@ -5,73 +5,30 @@ import communityPrayer from '../assets/onearth-inspired/community-prayer.jpg'
 import heroPrayer from '../assets/onearth-inspired/hero-prayer.jpg'
 import mosqueGathering from '../assets/onearth-inspired/mosque-gathering.jpg'
 import outdoorPrayer from '../assets/onearth-inspired/outdoor-prayer.jpg'
+import summerCamp from '../assets/summer-camp-bg.jpg'
 import './ScrollGridSection.css'
 
-const unsplashImage = (id) =>
-  `https://images.unsplash.com/${id}?w=800&auto=format&fit=crop&q=60`
-
-// Local Al-Huda photos first; free Unsplash images fill the remaining slots.
+// All tiles are bundled Al-Huda photos (no network dependency); repeats are
+// intentional — the tiles are small and read as texture, not duplicates.
 const LAYER_1 = [
-  {
-    src: communityPrayer,
-    alt: 'Children attending an Al-Huda weekend Islamic class.',
-  },
-  {
-    src: unsplashImage('photo-1741942739533-2825e11372e7'),
-    alt: 'Families seated in a mosque hall for community iftar.',
-  },
-  {
-    src: outdoorPrayer,
-    alt: 'Al-Huda community members gathered on prayer mats.',
-  },
-  {
-    src: unsplashImage('photo-1773958731767-6429d39d9efb'),
-    alt: 'Hands making du\'a over a Ramadan iftar table.',
-  },
-  {
-    src: unsplashImage('photo-1637034120715-cdd8f1c9347d'),
-    alt: 'Children sitting together during an Islamic learning session.',
-  },
-  {
-    src: unsplashImage('photo-1778784509942-fab20ec1ca06'),
-    alt: 'Two people reading the Qur\'an together.',
-  },
+  { src: communityPrayer, alt: 'Children attending an Al-Huda weekend Islamic class.' },
+  { src: mosqueGathering, alt: 'Al-Huda community gathering for prayer and reminders.' },
+  { src: outdoorPrayer, alt: 'Al-Huda community members gathered on prayer mats.' },
+  { src: summerCamp, alt: 'Cabin at the Al-Huda summer camp and family retreat.' },
+  { src: heroPrayer, alt: 'Worshippers standing shoulder to shoulder in prayer.' },
+  { src: communityPrayer, alt: 'Weekend Islamic class in session.' },
 ]
 const LAYER_2 = [
-  {
-    src: heroPrayer,
-    alt: 'Worshippers standing shoulder to shoulder in prayer.',
-  },
-  {
-    src: unsplashImage('photo-1741719396796-6b7484ef9f6f'),
-    alt: 'A worshipper praying inside a mosque.',
-  },
-  {
-    src: mosqueGathering,
-    alt: 'Al-Huda community gathering for prayer and reminders.',
-  },
-  {
-    src: unsplashImage('photo-1651293478838-1f51675131c5'),
-    alt: 'An Islamic lecture being delivered inside a mosque.',
-  },
-  {
-    src: unsplashImage('photo-1712249239085-2161afc54d60'),
-    alt: 'People sitting on the floor reading Islamic texts.',
-  },
-  {
-    src: unsplashImage('photo-1712249237537-8c5a0420653b'),
-    alt: 'Children sitting together at a mosque.',
-  },
+  { src: heroPrayer, alt: 'Worshippers standing shoulder to shoulder in prayer.' },
+  { src: outdoorPrayer, alt: 'Outdoor congregational prayer on grass.' },
+  { src: mosqueGathering, alt: 'Al-Huda community gathering for prayer and reminders.' },
+  { src: summerCamp, alt: 'Al-Huda family retreat grounds.' },
+  { src: communityPrayer, alt: 'Children learning together at the centre.' },
+  { src: outdoorPrayer, alt: 'Community members gathered on prayer mats.' },
 ]
 const LAYER_3 = [
-  {
-    src: unsplashImage('photo-1778784520034-4bd45eb46cf9'),
-    alt: 'Two people reading the Qur\'an together on a rug.',
-  },
-  {
-    src: unsplashImage('photo-1761939998833-7a746e01f31f'),
-    alt: 'A person praying in a sunlit mosque.',
-  },
+  { src: summerCamp, alt: 'Al-Huda summer camp and family retreat.' },
+  { src: heroPrayer, alt: 'Congregation standing for prayer.' },
 ]
 const SCALER = {
   src: mosqueGathering,
@@ -82,10 +39,18 @@ export default function ScrollGridSection() {
   const rootRef = useRef(null)
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
     const root = rootRef.current
     if (!root) return
+
+    // Reduced motion / small screens: skip the pinned scrollytelling and show
+    // the assembled grid statically (otherwise tiles stay at scale(0) forever).
+    if (
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      window.innerWidth < 768
+    ) {
+      root.classList.add('sg-static')
+      return
+    }
 
     const image = root.querySelector('.scaler img')
     const firstSection = root.querySelector('.sg-scroll')
