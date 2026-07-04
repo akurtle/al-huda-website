@@ -96,6 +96,19 @@ tokens above for backward compatibility. New code should use canonical names.
 
 ## Primitives
 
+- **GeometricPattern** (`components/GeometricPattern.jsx`): girih 8-point-star
+  line lattice, the brand signature. Thin strokes, low opacity (default
+  `--pattern-opacity`), gold on dark bands, `fade` prop for masking. Parent must
+  be `position: relative`. Never filled clip-art.
+- **Star eyebrow**: `.section-tag::before` renders an 8-point star mask (not a
+  dot). The hero badge (`.badge-dot`) matches in gold.
+- **Dark bands**: immersive sections (Prayer Times, footer) use `--ink-bg` with
+  white text, `rgba(255,255,255,.05-.06)` glass cards with 1px `rgba(255,255,255,.1)`
+  borders, and gold (`--accent`) for eyebrows/active states.
+- **PageHero** (`components/PageHero.jsx`): every interior page hero. Photo +
+  green duotone scrim + pattern corner; gradient fallback when no photo.
+- **Reveal** (`components/Reveal.jsx`): standard `whileInView` entrance for
+  section headers and card grids. Respects reduced motion. Do not nest.
 - **Buttons**: `.btn` + `.btn-primary` (green) / `.btn-outline`. Single arrow
   sub-component size (36px). Navbar/footer actions compose these, never redefine.
 - **Card**: `.card` base = `--radius-lg`, `--space-card`, `--shadow-md`,
