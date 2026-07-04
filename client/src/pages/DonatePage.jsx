@@ -84,15 +84,15 @@ export default function DonatePage() {
                     <line x1="12" y1="8" x2="12" y2="16"/>
                     <line x1="8" y1="12" x2="16" y2="12"/>
                   </svg>
-                  GoFundMe
+                  Zeffy
                 </span>
                 <span className="donate-option-value">
-                  <a 
-                    href="https://www.gofundme.com/f/fundraiser-for-permanent-masjid-for-5daily-prayers"
+                  <a
+                    href="https://www.zeffy.com/en-CA/donation-form/aic-masjid-donation-campaign"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Mount Pearl Masjid: Elevate Faith, Build Home
+                    AIC Masjid Donation Campaign
                   </a>
                 </span>
               </div>
