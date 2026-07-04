@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap');
 
 /* ========================================
    DESIGN SYSTEM - Al Huda Islamic Centre
@@ -30,6 +30,12 @@
   --text-muted:   #616161;
   --border:       #E2E2DC;
   --glass-white:  #ffffff1f;
+
+  /* Dark green surfaces (immersive bands: prayer times, donate CTA, footer) */
+  --ink-bg:       #0B2417;
+  --ink-bg-2:     #10301F;
+  --gold-line:    rgba(194, 161, 77, 0.35);
+  --pattern-opacity: 0.06;
 
   /* --- Legacy aliases (backward compatibility -> canonical) --- */
   --neutral-white: var(--white);
@@ -67,7 +73,7 @@
   --info: #3b82f6;
 
   --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Nunito Sans', var(--font-primary);
+  --font-display: 'Fraunces', Georgia, serif;
 
   /* --- Type scale --- */
   --text-lead:     1.1rem;
@@ -75,7 +81,7 @@
   --fs-h3:      clamp(1.25rem, 2vw, 1.5rem);
   --fs-h2:      clamp(1.8rem, 3vw, 2.5rem);
   --fs-section: clamp(2rem, 5vw, 3.5rem);
-  --fs-page:    clamp(2.5rem, 6vw, 4.75rem);
+  --fs-page:    clamp(2.1rem, 6vw, 4.75rem);
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -133,6 +139,11 @@ a {
   transition: color var(--transition-fast);
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
@@ -156,10 +167,6 @@ input, select, textarea {
 
 .text-gradient {
   color: var(--primary-green-500);
-}
-
-.islamic-pattern-overlay {
-  display: none;
 }
 
 ::-webkit-scrollbar { width: 8px; }
@@ -246,6 +253,38 @@ input, select, textarea {
   margin-bottom: 4rem;
 }
 
+.section-header--left {
+  text-align: left;
+}
+
+.section-header--left .section-subtitle {
+  margin: 0;
+}
+
+/* Geometric pattern overlay (see GeometricPattern.jsx) */
+.geo-pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.geo-pattern--fade-top {
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.geo-pattern--fade-bottom {
+  -webkit-mask-image: linear-gradient(to top, black, transparent 85%);
+  mask-image: linear-gradient(to top, black, transparent 85%);
+}
+
+.geo-pattern--fade-radial {
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+}
+
 .section-tag {
   display: inline-flex;
   align-items: center;
@@ -263,20 +302,23 @@ input, select, textarea {
 }
 
 .section-tag::before {
+  /* 8-point star mark (two overlapping squares), brand signature */
   content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-full);
+  width: 12px;
+  height: 12px;
   background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='5' y='5' width='14' height='14'/%3E%3Crect x='5' y='5' width='14' height='14' transform='rotate(45 12 12)'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='5' y='5' width='14' height='14'/%3E%3Crect x='5' y='5' width='14' height='14' transform='rotate(45 12 12)'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--primary-green-500);
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 1rem;
+  text-wrap: balance;
 }
 
 .section-subtitle {

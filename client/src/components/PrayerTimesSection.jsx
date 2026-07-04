@@ -1,3 +1,4 @@
+import GeometricPattern from './GeometricPattern'
 import './PrayerTimesSection.css'
 
 const prayerIcons = {
@@ -12,9 +13,11 @@ const prayerIcons = {
 const prayerOrder = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha']
 const prayerLabels = { fajr: 'Fajr', sunrise: 'Sunrise', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha' }
 
-export default function PrayerTimesSection({ times, location, islamicDate, gregorianDate, nextPrayerKey }) {
+export default function PrayerTimesSection({ times, location, islamicDate, gregorianDate, nextPrayer }) {
+  const nextPrayerKey = nextPrayer?.key
   return (
     <section className="prayer-section" id="prayer-times">
+      <GeometricPattern color="var(--accent)" opacity="0.05" fade="radial" />
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Salah Schedule</span>
@@ -40,6 +43,9 @@ export default function PrayerTimesSection({ times, location, islamicDate, grego
               <div className="prayer-card-icon">{prayerIcons[key]}</div>
               <div className="prayer-card-name">{prayerLabels[key]}</div>
               <div className="prayer-card-time">{times?.[key] || '--:--'}</div>
+              {nextPrayerKey === key && nextPrayer?.countdown && (
+                <div className="prayer-card-countdown">{nextPrayer.countdown}</div>
+              )}
             </div>
           ))}
         </div>

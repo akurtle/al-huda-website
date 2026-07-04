@@ -1,23 +1,17 @@
-import { Link } from 'react-router-dom'
+import PageHero from '../components/PageHero'
+import heroPhoto from '../assets/onearth-inspired/mosque-gathering.jpg'
 import '../pages/PageStyles.css'
 
 export default function MissionPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">/</span>
-            <span>Mission Statement</span>
-          </div>
-          <span className="section-tag">Our Purpose</span>
-          <h1 className="page-hero-title">Mission Statement</h1>
-          <p className="page-hero-subtitle">
-            Our guiding vision for building a centre of excellence in Newfoundland.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: 'Mission Statement' }]}
+        eyebrow="Our Purpose"
+        title="Mission Statement"
+        subtitle="Our guiding vision for building a centre of excellence in Newfoundland."
+        image={heroPhoto}
+      />
 
       <section className="page-body">
         <div className="container">

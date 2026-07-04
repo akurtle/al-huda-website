@@ -1,23 +1,17 @@
-import { Link } from 'react-router-dom'
+import PageHero from '../components/PageHero'
+import heroPhoto from '../assets/onearth-inspired/outdoor-prayer.jpg'
 import '../pages/PageStyles.css'
 
 export default function ContactPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">/</span>
-            <span>Contact</span>
-          </div>
-          <span className="section-tag">Reach Out</span>
-          <h1 className="page-hero-title">Get in Touch</h1>
-          <p className="page-hero-subtitle">
-            We'd love to hear from you. Reach out for any questions, suggestions, or support.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: 'Contact' }]}
+        eyebrow="Reach Out"
+        title="Get in Touch"
+        subtitle="We'd love to hear from you. Reach out for any questions, suggestions, or support."
+        image={heroPhoto}
+      />
 
       <section className="page-body">
         <div className="container">

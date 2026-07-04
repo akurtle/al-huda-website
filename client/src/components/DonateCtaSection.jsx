@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import GeometricPattern from './GeometricPattern'
 import './DonateCtaSection.css'
 
 export default function DonateCtaSection() {
@@ -6,6 +7,7 @@ export default function DonateCtaSection() {
     <section className="donate-cta-section">
       <div className="container">
         <div className="donate-cta-card">
+          <GeometricPattern color="var(--accent)" opacity="0.1" fade="radial" />
           <div className="donate-cta-content">
             <span className="section-tag">Support the Centre</span>
             <h2>Your donation helps sustain worship, learning, and care.</h2>

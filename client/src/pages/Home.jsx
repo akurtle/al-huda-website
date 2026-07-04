@@ -79,7 +79,7 @@ export default function Home() {
         location={location}
         islamicDate={prayerData?.hijri}
         gregorianDate={prayerData?.gregorian}
-        nextPrayerKey={nextPrayer?.key}
+        nextPrayer={nextPrayer}
       />
       <CommunitySection />
       <DonateCtaSection />

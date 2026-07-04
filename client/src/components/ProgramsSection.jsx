@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Reveal from './Reveal'
 import communityPrayer from '../assets/onearth-inspired/community-prayer.jpg'
 import gatheringImage from '../assets/onearth-inspired/mosque-gathering.jpg'
 import outdoorPrayer from '../assets/onearth-inspired/outdoor-prayer.jpg'
@@ -42,14 +43,14 @@ export default function ProgramsSection() {
   return (
     <section className="programs-section" id="programs">
       <div className="container">
-        <div className="section-header">
+        <Reveal className="section-header">
           <span className="section-tag">What We Offer</span>
           <h2 className="section-title">Programs & Services</h2>
           <p className="section-subtitle">
-            Al-Huda Islamic Centre (AIC) is enriched with outstanding programs and core services 
+            Al-Huda Islamic Centre (AIC) is enriched with outstanding programs and core services
             for the Muslim community in Newfoundland.
           </p>
-        </div>
+        </Reveal>
         <div className="programs-grid">
           {programs.map((p) => (
             <Link 

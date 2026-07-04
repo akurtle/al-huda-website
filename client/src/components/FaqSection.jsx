@@ -50,7 +50,7 @@ export default function FaqSection() {
                         <span className="faq-icon-line vertical"></span>
                       </div>
                     </button>
-                    <div className="faq-content" style={{ maxHeight: isOpen ? '200px' : '0' }}>
+                    <div className="faq-content">
                       <p>{faq.a}</p>
                     </div>
                   </div>

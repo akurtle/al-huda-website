@@ -1,4 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
+import PageHero from '../components/PageHero'
+import heroPhoto from '../assets/onearth-inspired/community-prayer.jpg'
 import '../pages/PageStyles.css'
 
 const programData = {
@@ -184,34 +186,24 @@ export default function ProgramDetailPage() {
   if (!program) {
     return (
       <>
-        <section className="page-hero">
-          <div className="container">
-            <h1 className="page-hero-title">Program Not Found</h1>
-            <p className="page-hero-subtitle">
-              The program you're looking for doesn't exist. <Link to="/" style={{ color: 'var(--gold-light)' }}>Go back home</Link>.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          crumbs={[{ label: 'Programs' }]}
+          title="Program Not Found"
+          subtitle={<>The program you&apos;re looking for doesn&apos;t exist. <Link to="/" style={{ color: 'var(--gold-light)' }}>Go back home</Link>.</>}
+        />
       </>
     )
   }
 
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">/</span>
-            <span>Programs</span>
-            <span className="breadcrumb-sep">/</span>
-            <span>{program.title}</span>
-          </div>
-          <span className="section-tag">{program.tag}</span>
-          <h1 className="page-hero-title">{program.title}</h1>
-          <p className="page-hero-subtitle">{program.subtitle}</p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: 'Programs' }, { label: program.title }]}
+        eyebrow={program.tag}
+        title={program.title}
+        subtitle={program.subtitle}
+        image={heroPhoto}
+      />
 
       <section className="page-body">
         <div className="container">

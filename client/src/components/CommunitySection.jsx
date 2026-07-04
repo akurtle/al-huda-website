@@ -39,7 +39,7 @@ export default function CommunitySection() {
   return (
     <section className="community-section" id="community">
       <div className="container">
-        <div className="section-header">
+        <div className="section-header section-header--left">
           <span className="section-tag">Our Community</span>
           <h2 className="section-title">Voices & Events</h2>
         </div>

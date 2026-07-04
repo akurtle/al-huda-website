@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import PageHero from '../components/PageHero'
+import heroPhoto from '../assets/onearth-inspired/community-prayer.jpg'
 import '../pages/PageStyles.css'
 
 const executives = [
@@ -19,22 +20,13 @@ const executives = [
 export default function ExecutivesPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">/</span>
-            <Link to="/mission">Mission Statement</Link>
-            <span className="breadcrumb-sep">/</span>
-            <span>Our Executives</span>
-          </div>
-          <span className="section-tag">Leadership</span>
-          <h1 className="page-hero-title">Executive Members of AIC</h1>
-          <p className="page-hero-subtitle">
-            Meet the New AIC Executive team dedicated to serving our community.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: 'Mission Statement', to: '/mission' }, { label: 'Our Executives' }]}
+        eyebrow="Leadership"
+        title="Executive Members of AIC"
+        subtitle="Meet the New AIC Executive team dedicated to serving our community."
+        image={heroPhoto}
+      />
 
       <section className="page-body">
         <div className="container">

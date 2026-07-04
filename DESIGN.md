@@ -29,6 +29,12 @@ faith-centered. Green is the primary action color; gold is an accent only.
 --surface:      #F4F8F5;   /* page tint */
 --surface-2:    #E8F1EB;   /* card tint */
 
+/* Dark green surfaces (immersive bands: prayer times, donate CTA, footer) */
+--ink-bg:       #0B2417;
+--ink-bg-2:     #10301F;
+--gold-line:    rgba(194, 161, 77, 0.35);   /* thin geometric line-work */
+--pattern-opacity: 0.06;                     /* GeometricPattern default */
+
 /* Neutrals */
 --white:        #FFFFFF;
 --ink:          #181818;   /* body text */
@@ -51,8 +57,12 @@ tokens above for backward compatibility. New code should use canonical names.
 
 ## Typography
 
-- Display: `--font-display` -> Nunito Sans (headings)
-- Body: `--font-primary` -> Manrope (copy)
+- Display: `--font-display` -> Fraunces (headings; weight 500-600, italic for the
+  hero's rotating word). Fraunces' calligraphic warmth is the expressive voice of
+  the "Modern Sacred" direction. Never bold above 600.
+- Body: `--font-primary` -> Manrope (copy, UI, buttons)
+- Headings use `text-wrap: balance`; numeric UI (stats, prayer times) uses
+  `font-variant-numeric: tabular-nums`.
 
 ### Type scale (use everywhere; no per-component fixed sizes)
 ```
@@ -86,6 +96,19 @@ tokens above for backward compatibility. New code should use canonical names.
 
 ## Primitives
 
+- **GeometricPattern** (`components/GeometricPattern.jsx`): girih 8-point-star
+  line lattice, the brand signature. Thin strokes, low opacity (default
+  `--pattern-opacity`), gold on dark bands, `fade` prop for masking. Parent must
+  be `position: relative`. Never filled clip-art.
+- **Star eyebrow**: `.section-tag::before` renders an 8-point star mask (not a
+  dot). The hero badge (`.badge-dot`) matches in gold.
+- **Dark bands**: immersive sections (Prayer Times, footer) use `--ink-bg` with
+  white text, `rgba(255,255,255,.05-.06)` glass cards with 1px `rgba(255,255,255,.1)`
+  borders, and gold (`--accent`) for eyebrows/active states.
+- **PageHero** (`components/PageHero.jsx`): every interior page hero. Photo +
+  green duotone scrim + pattern corner; gradient fallback when no photo.
+- **Reveal** (`components/Reveal.jsx`): standard `whileInView` entrance for
+  section headers and card grids. Respects reduced motion. Do not nest.
 - **Buttons**: `.btn` + `.btn-primary` (green) / `.btn-outline`. Single arrow
   sub-component size (36px). Navbar/footer actions compose these, never redefine.
 - **Card**: `.card` base = `--radius-lg`, `--space-card`, `--shadow-md`,
