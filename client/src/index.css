@@ -158,10 +158,6 @@ input, select, textarea {
   color: var(--primary-green-500);
 }
 
-.islamic-pattern-overlay {
-  display: none;
-}
-
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--primary-green-100); }
 ::-webkit-scrollbar-thumb { background: var(--primary-green-500); border-radius: 4px; }

@@ -9,13 +9,13 @@ import ExecutivesPage from './pages/ExecutivesPage'
 import DonatePage from './pages/DonatePage'
 import ContactPage from './pages/ContactPage'
 import ProgramDetailPage from './pages/ProgramDetailPage'
+import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
 function App() {
   return (
     <Router>
       <div className="app">
-        <div className="islamic-pattern-overlay"></div>
         <ScrollToTop />
         <Navbar />
         <main>
@@ -27,6 +27,7 @@ function App() {
             <Route path="/donate" element={<DonatePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/programs/:slug" element={<ProgramDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />
