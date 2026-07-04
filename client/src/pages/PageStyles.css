@@ -26,6 +26,37 @@
   z-index: 1;
 }
 
+/* Photo variant (PageHero with `image`): duotone green scrim over photography */
+.page-hero--photo {
+  background: var(--ink-bg);
+}
+
+.page-hero--photo::after {
+  content: none;
+}
+
+.page-hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 25, 16, 0.55), rgba(10, 25, 16, 0.88)),
+    linear-gradient(90deg, rgba(10, 25, 16, 0.5), rgba(10, 25, 16, 0.12));
+}
+
+.page-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .page-hero .section-tag {
   color: var(--neutral-white);
 }
@@ -34,9 +65,10 @@
   max-width: 850px;
   font-family: var(--font-display);
   font-size: var(--fs-page);
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 24px;
   line-height: 1.08;
+  text-wrap: balance;
 }
 
 .page-hero-subtitle {

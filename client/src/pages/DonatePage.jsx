@@ -1,24 +1,17 @@
-import { Link } from 'react-router-dom'
+import PageHero from '../components/PageHero'
+import heroPhoto from '../assets/onearth-inspired/hero-prayer.jpg'
 import '../pages/PageStyles.css'
 
 export default function DonatePage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">/</span>
-            <span>Donate</span>
-          </div>
-          <span className="section-tag">Support Us</span>
-          <h1 className="page-hero-title">Your Donation Matters</h1>
-          <p className="page-hero-subtitle">
-            Together, we can build a centre of excellence that serves as a beacon 
-            for the Muslim community in Newfoundland and beyond.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: 'Donate' }]}
+        eyebrow="Support Us"
+        title="Your Donation Matters"
+        subtitle="Together, we can build a centre of excellence that serves as a beacon for the Muslim community in Newfoundland and beyond."
+        image={heroPhoto}
+      />
 
       <section className="page-body">
         <div className="container">
