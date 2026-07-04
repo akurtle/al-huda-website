@@ -12,7 +12,7 @@
   gap: 48px;
   padding: 64px;
   border-radius: var(--radius-lg);
-  background: var(--primary-green-500);
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-darker) 100%);
   color: var(--neutral-white);
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }

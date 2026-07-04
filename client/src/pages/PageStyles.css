@@ -240,6 +240,12 @@
   font-weight: 700;
 }
 
+.donate-content h2,
+.donate-options h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
 .executive-name {
   font-size: 1.1rem;
 }
@@ -264,12 +270,17 @@
   padding: 32px;
 }
 
+.donate-project-card {
+  border-top: 2px solid var(--accent);
+}
+
 .donate-project-card .donate-icon,
 .contact-info-icon {
   width: 52px;
   height: 52px;
-  border-radius: var(--radius-full);
-  background: var(--neutral-white);
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
   display: flex;
   align-items: center;
   justify-content: center;
