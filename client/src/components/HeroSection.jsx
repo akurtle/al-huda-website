@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import heroImage from '../assets/onearth-inspired/hero-prayer.jpg'
+import GeometricPattern from './GeometricPattern'
 import './HeroSection.css'
 
 const MotionSpan = motion.span
@@ -53,6 +54,7 @@ export default function HeroSection({ nextPrayer, islamicDate }) {
   return (
     <section className="hero-section" id="home" style={{ '--hero-image': `url(${heroImage})` }}>
       <div className="hero-overlay" />
+      <GeometricPattern color="var(--accent)" opacity="0.08" fade="bottom" />
       <div className="container hero-container">
         <div className="hero-content">
           <div className="hero-left">
