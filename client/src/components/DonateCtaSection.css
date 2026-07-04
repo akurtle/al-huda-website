@@ -4,6 +4,8 @@
 }
 
 .donate-cta-card {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
@@ -13,6 +15,12 @@
   background: var(--primary-green-500);
   color: var(--neutral-white);
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.donate-cta-content,
+.donate-cta-actions {
+  position: relative;
+  z-index: 1;
 }
 
 .donate-cta-card:hover {

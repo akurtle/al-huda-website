@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo.png'
+import GeometricPattern from './GeometricPattern'
 import './Footer.css'
 
 export default function Footer() {
   return (
     <footer className="footer">
+      <GeometricPattern color="var(--accent)" opacity="0.05" fade="top" />
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
