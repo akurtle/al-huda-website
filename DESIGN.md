@@ -29,6 +29,12 @@ faith-centered. Green is the primary action color; gold is an accent only.
 --surface:      #F4F8F5;   /* page tint */
 --surface-2:    #E8F1EB;   /* card tint */
 
+/* Dark green surfaces (immersive bands: prayer times, donate CTA, footer) */
+--ink-bg:       #0B2417;
+--ink-bg-2:     #10301F;
+--gold-line:    rgba(194, 161, 77, 0.35);   /* thin geometric line-work */
+--pattern-opacity: 0.06;                     /* GeometricPattern default */
+
 /* Neutrals */
 --white:        #FFFFFF;
 --ink:          #181818;   /* body text */
@@ -51,8 +57,12 @@ tokens above for backward compatibility. New code should use canonical names.
 
 ## Typography
 
-- Display: `--font-display` -> Nunito Sans (headings)
-- Body: `--font-primary` -> Manrope (copy)
+- Display: `--font-display` -> Fraunces (headings; weight 500-600, italic for the
+  hero's rotating word). Fraunces' calligraphic warmth is the expressive voice of
+  the "Modern Sacred" direction. Never bold above 600.
+- Body: `--font-primary` -> Manrope (copy, UI, buttons)
+- Headings use `text-wrap: balance`; numeric UI (stats, prayer times) uses
+  `font-variant-numeric: tabular-nums`.
 
 ### Type scale (use everywhere; no per-component fixed sizes)
 ```
