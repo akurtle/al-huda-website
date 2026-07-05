@@ -31,9 +31,36 @@ const programData = {
           <li>Parents should assist their wards to complete their homework.</li>
           <li>Parents should provide snacks for their kids to bring along to school.</li>
         </ol>
+
+        <div className="registration-cta">
+          <div className="registration-cta-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg>
+          </div>
+          <div className="registration-cta-body">
+            <h3>Register Your Child</h3>
+            <p>Complete the registration form below to formally admit your child into the Weekend Islamic Classes.</p>
+          </div>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScHWmYFI1oMKGCU2I7RMGJ9HYbz8ApCX9r3wsk_ZxlSKVAdGw/viewform?pli=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary btn-lg registration-cta-btn"
+          >
+            Complete Registration Form
+            <span className="btn-arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
+          </a>
+        </div>
+
         <p>
-          Further updates will be provided in due course, In Sha Allah. 
-          We anticipate that you will assist in providing a good Islamic foundation 
+          Further updates will be provided in due course, In Sha Allah.
+          We anticipate that you will assist in providing a good Islamic foundation
           for our kids. Jazaakallaahu Khair.
         </p>
       </>
