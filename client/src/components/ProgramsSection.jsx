@@ -4,13 +4,14 @@ import communityPrayer from '../assets/onearth-inspired/community-prayer.jpg'
 import gatheringImage from '../assets/onearth-inspired/mosque-gathering.jpg'
 import outdoorPrayer from '../assets/onearth-inspired/outdoor-prayer.jpg'
 import heroPrayer from '../assets/onearth-inspired/hero-prayer.jpg'
+import lecture1Image from '../assets/onearth-inspired/Lecutre-1.jpg'
 import './ProgramsSection.css'
 
 const programs = [
   {
     title: 'Bi-Weekly Lectures',
     desc: 'Regular Islamic lectures covering various topics to enrich knowledge and strengthen faith.',
-    image: gatheringImage,
+    image: lecture1Image,
     slug: 'lectures',
   },
   {

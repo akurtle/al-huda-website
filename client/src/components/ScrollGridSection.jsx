@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom'
 import { animate, scroll, cubicBezier } from 'motion'
 import communityPrayer from '../assets/onearth-inspired/community-prayer.jpg'
 import heroPrayer from '../assets/onearth-inspired/hero-prayer.jpg'
-import mosqueGathering from '../assets/onearth-inspired/mosque-gathering.jpg'
+import appDemo from '../assets/onearth-inspired/appDemo.jpg'
+import quiz1 from '../assets/onearth-inspired/quiz1.jpg'
+import quiz2 from '../assets/onearth-inspired/quiz2.jpg'
+import quiz3 from '../assets/onearth-inspired/quiz3.jpg'
+import lecture1 from '../assets/onearth-inspired/Lecutre-1.jpg'
+import lecture2 from '../assets/onearth-inspired/Lecutre-2.jpg'
+import lecture3 from '../assets/onearth-inspired/Lecutre-3.jpg'
 import outdoorPrayer from '../assets/onearth-inspired/outdoor-prayer.jpg'
 import summerCamp from '../assets/summer-camp-bg.jpg'
 import './ScrollGridSection.css'
@@ -12,26 +18,26 @@ import './ScrollGridSection.css'
 // intentional — the tiles are small and read as texture, not duplicates.
 const LAYER_1 = [
   { src: communityPrayer, alt: 'Children attending an Al-Huda weekend Islamic class.' },
-  { src: mosqueGathering, alt: 'Al-Huda community gathering for prayer and reminders.' },
+  { src: lecture3, alt: 'Al-Huda community gathering for prayer and reminders.' },
   { src: outdoorPrayer, alt: 'Al-Huda community members gathered on prayer mats.' },
-  { src: summerCamp, alt: 'Cabin at the Al-Huda summer camp and family retreat.' },
-  { src: heroPrayer, alt: 'Worshippers standing shoulder to shoulder in prayer.' },
+  { src: quiz1, alt: 'Cabin at the Al-Huda summer camp and family retreat.' },
+  { src: lecture1, alt: 'Worshippers standing shoulder to shoulder in prayer.' },
   { src: communityPrayer, alt: 'Weekend Islamic class in session.' },
 ]
 const LAYER_2 = [
   { src: heroPrayer, alt: 'Worshippers standing shoulder to shoulder in prayer.' },
   { src: outdoorPrayer, alt: 'Outdoor congregational prayer on grass.' },
-  { src: mosqueGathering, alt: 'Al-Huda community gathering for prayer and reminders.' },
-  { src: summerCamp, alt: 'Al-Huda family retreat grounds.' },
+  { src: quiz3, alt: 'Al-Huda community gathering for prayer and reminders.' },
+  { src: quiz2, alt: 'Al-Huda family retreat grounds.' },
   { src: communityPrayer, alt: 'Children learning together at the centre.' },
   { src: outdoorPrayer, alt: 'Community members gathered on prayer mats.' },
 ]
 const LAYER_3 = [
   { src: summerCamp, alt: 'Al-Huda summer camp and family retreat.' },
-  { src: heroPrayer, alt: 'Congregation standing for prayer.' },
+  { src: lecture2, alt: 'Congregation standing for prayer.' },
 ]
 const SCALER = {
-  src: mosqueGathering,
+  src: appDemo,
   alt: 'Al-Huda community members seated for a gathering.',
 }
 
@@ -78,7 +84,7 @@ export default function ScrollGridSection() {
           { scale: [coverScale, 1] },
           { ease: cubicBezier(0.65, 0, 0.35, 1) }, // GSAP power2.inOut
         ),
-        { target: firstSection, offset: ['start start', '80% end'] },
+        { target: firstSection, offset: ['start start', '120% end'] },
       ),
     )
 
@@ -90,7 +96,7 @@ export default function ScrollGridSection() {
     ]
 
     layers.forEach((layer, index) => {
-      const endOffset = `${1 - index * 0.05} end`
+      const endOffset = `${1.5 - index * 0.075} end`
 
       // fade: hold opacity 0 until 55% of scroll, then to 1.
       stoppers.push(
