@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 import communityPrayer from '../assets/onearth-inspired/community-prayer.jpg'
 import gatheringImage from '../assets/onearth-inspired/mosque-gathering.jpg'
 import outdoorPrayer from '../assets/onearth-inspired/outdoor-prayer.jpg'
-import heroPrayer from '../assets/onearth-inspired/hero-prayer.jpg'
+import lecutre3 from '../assets/onearth-inspired/Lecutre-3.jpg'
 import lecture1Image from '../assets/onearth-inspired/Lecutre-1.jpg'
 import './ProgramsSection.css'
 
@@ -17,7 +17,7 @@ const programs = [
   {
     title: 'Annual Ramadan Tafseer',
     desc: 'In-depth Qur\'anic exegesis sessions held annually during the blessed month of Ramadan.',
-    image: heroPrayer,
+    image: lecutre3,
     slug: 'tafseer',
   },
   {
