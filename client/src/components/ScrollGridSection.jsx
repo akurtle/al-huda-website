@@ -84,7 +84,7 @@ export default function ScrollGridSection() {
           { scale: [coverScale, 1] },
           { ease: cubicBezier(0.65, 0, 0.35, 1) }, // GSAP power2.inOut
         ),
-        { target: firstSection, offset: ['start start', '120% end'] },
+        { target: firstSection, offset: ['start start', '80% end'] },
       ),
     )
 
@@ -96,7 +96,7 @@ export default function ScrollGridSection() {
     ]
 
     layers.forEach((layer, index) => {
-      const endOffset = `${1.5 - index * 0.075} end`
+      const endOffset = `${1 - index * 0.05} end`
 
       // fade: hold opacity 0 until 55% of scroll, then to 1.
       stoppers.push(

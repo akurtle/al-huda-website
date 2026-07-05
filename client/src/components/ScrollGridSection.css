@@ -40,7 +40,7 @@
 .scroll-grid .sg-scroll {
   /* Total scroll distance the reveal is mapped onto. Taller = the animation
      advances less per scroll tick, so the grid reveals slower and lingers. */
-  min-height: 180vh;
+  min-height: 270vh;
 }
 
 .scroll-grid .content {
