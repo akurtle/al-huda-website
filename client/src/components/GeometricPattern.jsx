@@ -11,11 +11,17 @@ export default function GeometricPattern({
   fade = 'none', // 'none' | 'top' | 'bottom' | 'radial'
   className = '',
 }) {
-  const pid = `geo-${useId().replace(/[^a-zA-Z0-9-]/g, '')}`
-  const fadeClass = fade !== 'none' ? ` geo-pattern--fade-${fade}` : ''
+  const raw = useId().replace(/[^a-zA-Z0-9-]/g, '')
+  const pid = `geo-${raw}`
+  const gid = `geofade-${raw}`
+  const mid = `geomask-${raw}`
 
+  // Fade is baked into the SVG via a native <mask> instead of a CSS mask-image.
+  // A CSS mask on a large full-section element promotes it to a GPU layer that
+  // Android Chrome corrupts (random static/tearing) during scroll. SVG-internal
+  // masks rasterize as part of the image, so there is no compositor mask layer.
   return (
-    <svg className={`geo-pattern${fadeClass} ${className}`} aria-hidden="true" style={{ opacity, color }}>
+    <svg className={`geo-pattern ${className}`} aria-hidden="true" style={{ opacity, color }}>
       <defs>
         <pattern id={pid} width="96" height="96" patternUnits="userSpaceOnUse">
           <g fill="none" stroke="currentColor" strokeWidth="1">
@@ -31,8 +37,39 @@ export default function GeometricPattern({
             <path d="M0 48h12M84 48h12M48 0v12M48 84v12" />
           </g>
         </pattern>
+        {fade === 'radial' && (
+          <radialGradient id={gid} cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stopColor="white" />
+            <stop offset="75%" stopColor="black" />
+            <stop offset="100%" stopColor="black" />
+          </radialGradient>
+        )}
+        {fade === 'top' && (
+          <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="white" />
+            <stop offset="85%" stopColor="black" />
+            <stop offset="100%" stopColor="black" />
+          </linearGradient>
+        )}
+        {fade === 'bottom' && (
+          <linearGradient id={gid} x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stopColor="white" />
+            <stop offset="85%" stopColor="black" />
+            <stop offset="100%" stopColor="black" />
+          </linearGradient>
+        )}
+        {fade !== 'none' && (
+          <mask id={mid}>
+            <rect width="100%" height="100%" fill={`url(#${gid})`} />
+          </mask>
+        )}
       </defs>
-      <rect width="100%" height="100%" fill={`url(#${pid})`} />
+      <rect
+        width="100%"
+        height="100%"
+        fill={`url(#${pid})`}
+        mask={fade !== 'none' ? `url(#${mid})` : undefined}
+      />
     </svg>
   )
 }
