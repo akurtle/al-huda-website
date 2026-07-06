@@ -2,14 +2,6 @@
   padding: var(--space-section) 0;
   background: var(--ink-bg);
   color: var(--neutral-white);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.prayer-section > .container {
-  position: relative;
-  z-index: 1;
 }
 
 .prayer-section .section-tag {
@@ -86,31 +78,7 @@
 .prayer-card.active {
   background: rgba(194, 161, 77, 0.12);
   border-color: var(--gold-line);
-}
-
-/* Glow lives on a pseudo-element with a static shadow; only opacity animates.
-   Opacity is GPU-composited, so no per-frame repaint -> no mobile scroll flicker. */
-.prayer-card.active::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 42px rgba(194, 161, 77, 0.28);
-  opacity: 0;
-  pointer-events: none;
-  animation: goldGlow 3s ease-in-out infinite;
-}
-
-@keyframes goldGlow {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .prayer-card.active::after {
-    animation: none;
-    opacity: 1;
-  }
+  box-shadow: 0 0 32px rgba(194, 161, 77, 0.2);
 }
 
 .prayer-card-icon {

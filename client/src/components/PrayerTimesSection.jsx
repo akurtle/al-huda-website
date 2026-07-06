@@ -1,4 +1,3 @@
-import GeometricPattern from './GeometricPattern'
 import './PrayerTimesSection.css'
 
 const prayerIcons = {
@@ -17,7 +16,6 @@ export default function PrayerTimesSection({ times, location, islamicDate, grego
   const nextPrayerKey = nextPrayer?.key
   return (
     <section className="prayer-section" id="prayer-times">
-      <GeometricPattern color="var(--accent)" opacity="0.05" fade="radial" />
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Salah Schedule</span>
