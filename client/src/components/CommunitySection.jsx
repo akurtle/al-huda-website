@@ -84,9 +84,6 @@ export default function CommunitySection() {
               </svg>
               Upcoming Events
             </h3>
-            {!isLoadingEvents && !eventsError && events.length > 1 && (
-              <span className="events-hint">Scroll for more →</span>
-            )}
           </div>
 
           {isLoadingEvents && (

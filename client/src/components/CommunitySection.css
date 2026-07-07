@@ -88,13 +88,6 @@
   color: var(--primary-green-500);
 }
 
-.events-hint {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--neutral-grey-500);
-  white-space: nowrap;
-}
-
 .event-notice {
   background: var(--primary-green-100);
   border-radius: var(--radius-lg);
@@ -109,9 +102,12 @@
   gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding-left: 4px;
-  padding: 4px 4px 16px;
-  margin: -4px -4px 0;
+  scroll-padding-left: 24px;
+  /* Generous padding so the soft card shadow isn't clipped by the
+     scroll container's overflow; negative margin keeps cards aligned
+     to the section edges. */
+  padding: 12px 24px 30px;
+  margin: -12px -24px 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--primary-green-500) transparent;
