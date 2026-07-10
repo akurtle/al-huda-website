@@ -9,6 +9,8 @@ import ExecutivesPage from './pages/ExecutivesPage'
 import DonatePage from './pages/DonatePage'
 import ContactPage from './pages/ContactPage'
 import ProgramDetailPage from './pages/ProgramDetailPage'
+import EventsPage from './pages/EventsPage'
+import EventDetailPage from './pages/EventDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
@@ -26,6 +28,8 @@ function App() {
             <Route path="/executives" element={<ExecutivesPage />} />
             <Route path="/donate" element={<DonatePage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/events/:id" element={<EventDetailPage />} />
             <Route path="/programs/:slug" element={<ProgramDetailPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

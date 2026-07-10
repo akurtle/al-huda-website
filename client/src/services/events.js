@@ -51,6 +51,18 @@ export function formatEventDate(value) {
   }).format(date)
 }
 
+export function formatEventDateLong(value) {
+  const date = toDate(value)
+  if (!date) return 'Date to be announced'
+
+  return new Intl.DateTimeFormat('en-CA', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date)
+}
+
 export async function fetchUpcomingEvents({ limit = 3 } = {}) {
   const cached = readEventsCache(limit)
   if (cached) return cached
@@ -68,4 +80,36 @@ export async function fetchUpcomingEvents({ limit = 3 } = {}) {
 
   writeEventsCache(events, limit)
   return events
+}
+
+// The full events listing reuses the same fetch/cache path as the home-page
+// preview, just with a larger limit.
+export async function fetchAllEvents({ limit = 50 } = {}) {
+  return fetchUpcomingEvents({ limit })
+}
+
+export async function fetchEventById(id) {
+  // Serve from the session cache when the event was already loaded by a list
+  // view, so navigating from the events page to a detail page is instant.
+  try {
+    const raw = sessionStorage.getItem(EVENTS_CACHE_KEY)
+    if (raw) {
+      const { events } = JSON.parse(raw)
+      const hit = Array.isArray(events) && events.find((event) => event.id === id)
+      if (hit) return hit
+    }
+  } catch {
+    // Ignore cache read/parse errors and fall through to a network fetch.
+  }
+
+  const response = await fetch(`${API_BASE}/api/data/events/${encodeURIComponent(id)}`)
+
+  if (response.status === 404) return null
+
+  if (!response.ok) {
+    throw new Error('Unable to load event')
+  }
+
+  const result = await response.json()
+  return result.data ?? null
 }

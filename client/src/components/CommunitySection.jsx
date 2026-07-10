@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { fetchUpcomingEvents, formatEventDate, readEventsCache } from '../services/events'
 import './CommunitySection.css'
 
@@ -84,6 +85,7 @@ export default function CommunitySection() {
               </svg>
               Upcoming Events
             </h3>
+            <Link to="/events" className="testimonial-link">View all events →</Link>
           </div>
 
           {isLoadingEvents && (
@@ -101,7 +103,11 @@ export default function CommunitySection() {
           {!isLoadingEvents && !eventsError && events.length > 0 && (
             <div className="events-scroller">
               {events.map((event) => (
-                <article className="event-card" key={event.id || event.title}>
+                <Link
+                  className="event-card"
+                  key={event.id || event.title}
+                  to={event.id ? `/events/${event.id}` : '/events'}
+                >
                   {event.assetImagePath && (
                     <img
                       className="event-image"
@@ -128,7 +134,7 @@ export default function CommunitySection() {
                       </div>
                     )}
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           )}
