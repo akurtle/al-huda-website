@@ -237,9 +237,99 @@
 }
 
 .poll-question-total {
-  margin-top: 18px;
+  margin-top: 0;
   font-size: 0.85rem;
   color: var(--neutral-grey-500);
+}
+
+/* ---- Head meta: countdown + vote count ---- */
+.poll-head-meta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.poll-countdown {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: var(--neutral-white);
+  color: var(--primary-green-500);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.poll-countdown.is-urgent {
+  background: #fdecea;
+  color: #b3261e;
+}
+
+/* ---- Closed banner: calm, not an error color ---- */
+.poll-closed-banner {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--neutral-white);
+  color: var(--neutral-grey-500);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ---- Change-answer: quiet secondary text button ---- */
+.poll-question-foot {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.poll-change-button {
+  flex-shrink: 0;
+  margin-top: 12px;
+  padding: 6px 0;
+  border: none;
+  background: none;
+  color: var(--primary-green-500);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.poll-change-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.poll-question-foot .poll-change-button {
+  margin-top: 0;
+}
+
+/* Current choice, highlighted while editing */
+.poll-option-button.is-current {
+  border-color: var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.poll-option-current {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  background: var(--accent-soft, #f0e6cc);
+  color: var(--accent-dark, #8a6a2a);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 640px) {

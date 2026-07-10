@@ -38,6 +38,13 @@ export default function usePollsForEvent(eventId) {
               question: String(data.question ?? ''),
               options,
               totalVotes: Number(data.totalVotes ?? 0),
+              votingStatus:
+                data.votingStatus === 'open' || data.votingStatus === 'closed'
+                  ? data.votingStatus
+                  : null,
+              // Firestore Timestamp → ms epoch (null when unset).
+              opensAt: data.opensAt?.toMillis ? data.opensAt.toMillis() : null,
+              closesAt: data.closesAt?.toMillis ? data.closesAt.toMillis() : null,
             }
           })
         )

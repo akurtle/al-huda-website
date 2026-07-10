@@ -11,6 +11,17 @@ export async function castVote(pollId, optionId) {
   })
 }
 
+// Voter changing their own answer: move the tally from the old option to the
+// new one. totalVotes is unchanged — matches the isVoteChangeUpdate rule.
+export async function changeVote(pollId, oldOptionId, newOptionId) {
+  if (!oldOptionId || oldOptionId === newOptionId) return
+  await updateDoc(doc(db, 'polls', pollId), {
+    [`options.${oldOptionId}.votes`]: increment(-1),
+    [`options.${newOptionId}.votes`]: increment(1),
+    updatedAt: serverTimestamp(),
+  })
+}
+
 // Client-only convenience, not a security guarantee — clearing localStorage
 // or writing to Firestore directly bypasses this. Firestore has no per-user
 // identity to check against for anonymous community polling.
