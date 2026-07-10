@@ -45,6 +45,7 @@ export default function usePollsForEvent(eventId) {
               // Firestore Timestamp → ms epoch (null when unset).
               opensAt: data.opensAt?.toMillis ? data.opensAt.toMillis() : null,
               closesAt: data.closesAt?.toMillis ? data.closesAt.toMillis() : null,
+              hideResultsFromVoters: Boolean(data.hideResultsFromVoters),
             }
           })
         )

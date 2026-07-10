@@ -85,7 +85,8 @@ export default function PollQuestion({ poll }) {
     }
   }
 
-  const showResults = (voted || state === 'closed') && !editing
+  const resultsHidden = poll.hideResultsFromVoters
+  const showResults = (voted || state === 'closed') && !editing && !resultsHidden
   const remaining = poll.closesAt ? poll.closesAt - now : null
   const urgent = remaining != null && remaining <= 10000
 
@@ -148,6 +149,33 @@ export default function PollQuestion({ poll }) {
             Keep my answer
           </button>
         </>
+      ) : (voted || state === 'closed') && resultsHidden ? (
+        <div className="poll-results-hidden">
+          {chosenId ? (
+            <div className="poll-options">
+              <div className="poll-option-button is-current poll-option-static">
+                <span className="poll-option-index" aria-hidden="true">
+                  {poll.options.findIndex((o) => o.id === chosenId) + 1}
+                </span>
+                <span className="poll-option-text">
+                  {poll.options.find((o) => o.id === chosenId)?.text}
+                </span>
+                <span className="poll-option-current">Your answer</span>
+              </div>
+            </div>
+          ) : (
+            <p className="poll-question-total">Voting has closed.</p>
+          )}
+          {voted && isOpen && (
+            <button
+              type="button"
+              className="poll-change-button"
+              onClick={() => setEditing(true)}
+            >
+              Change my answer
+            </button>
+          )}
+        </div>
       ) : !showResults ? (
         <div className="poll-options">
           {state === 'notStarted' && (
