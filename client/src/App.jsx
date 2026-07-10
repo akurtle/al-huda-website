@@ -11,6 +11,8 @@ import ContactPage from './pages/ContactPage'
 import ProgramDetailPage from './pages/ProgramDetailPage'
 import EventsPage from './pages/EventsPage'
 import EventDetailPage from './pages/EventDetailPage'
+import LivePollingPage from './pages/LivePollingPage'
+import PollEventDetailPage from './pages/PollEventDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
@@ -30,6 +32,8 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/events/:id" element={<EventDetailPage />} />
+            <Route path="/live-polling" element={<LivePollingPage />} />
+            <Route path="/live-polling/:eventId" element={<PollEventDetailPage />} />
             <Route path="/programs/:slug" element={<ProgramDetailPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

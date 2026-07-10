@@ -20,6 +20,7 @@ const navItems = [
   { label: 'Weekend Islamic Classes', path: '/programs/weekend-classes', hash: '' },
   { label: 'Jumuah Prayer', path: '/programs/jumuah', hash: '' },
   { label: 'Events', path: '/events', hash: '' },
+  { label: 'Live Polling', path: '/live-polling', hash: '' },
   { label: 'Contact', path: '/contact', hash: '' },
 ]
 
