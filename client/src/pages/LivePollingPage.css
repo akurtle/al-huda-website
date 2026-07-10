@@ -126,6 +126,20 @@
   cursor: default;
 }
 
+/* ---- Results hidden from voters (admin toggle) ---- */
+.poll-results-hidden {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: var(--space-card-sm) 0;
+}
+
+.poll-results-hidden .poll-question-total {
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
 /* ---- Results: bold filled rows, ranked ---- */
 .poll-results {
   display: flex;
@@ -330,6 +344,23 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+/* Static read-only option row (results-hidden "your answer" display) */
+.poll-option-button.poll-option-static {
+  cursor: default;
+}
+
+.poll-option-button.poll-option-static:hover {
+  transform: none;
+  background: var(--neutral-white);
+  color: var(--primary-green-500);
+  box-shadow: none;
+}
+
+.poll-option-button.poll-option-static:hover .poll-option-index {
+  background: var(--primary-green-100);
+  color: var(--primary-green-500);
 }
 
 @media (max-width: 640px) {
