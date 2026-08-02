@@ -46,11 +46,16 @@ app.use('/api/users', userRoutes);
 app.use('/api/data', genericRoutes); // Flexible generic CRUD
 
 // Health check
+const { cacheStats } = require('./lib/cache');
+
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    // Per-instance counters since boot — a low hit rate here means reads are
+    // still reaching Firestore and the TTLs are worth revisiting.
+    cache: cacheStats()
   });
 });
 
