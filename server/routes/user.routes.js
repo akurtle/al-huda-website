@@ -5,9 +5,16 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../models');
 const { db, isInitialized } = require('../config/firebase');
+const { cached, invalidatePrefix } = require('../lib/cache');
+
+const USER_TTL_MS = Number(process.env.USER_CACHE_TTL_MS || 60_000);
 
 // In-memory fallback
 const inMemoryUsers = [];
+
+function invalidateUser(uid) {
+  invalidatePrefix(`user:${uid}`);
+}
 
 /**
  * POST /api/users
@@ -24,6 +31,7 @@ router.post('/', async (req, res, next) => {
 
     if (isInitialized() && db) {
       await db.collection(User.COLLECTION).doc(user.uid).set(user.toJSON(), { merge: true });
+      invalidateUser(user.uid);
       res.json({ success: true, id: user.uid });
     } else {
       const idx = inMemoryUsers.findIndex(u => u.uid === user.uid);
@@ -48,11 +56,18 @@ router.get('/:uid', async (req, res, next) => {
     const { uid } = req.params;
 
     if (isInitialized() && db) {
-      const doc = await db.collection(User.COLLECTION).doc(uid).get();
-      if (!doc.exists) {
+      const data = await cached(`user:${uid}`, USER_TTL_MS, async () => {
+        const doc = await db.collection(User.COLLECTION).doc(uid).get();
+        return doc.exists ? { id: doc.id, ...doc.data() } : null;
+      });
+
+      if (!data) {
         return res.status(404).json({ success: false, error: 'User not found' });
       }
-      res.json({ success: true, data: { id: doc.id, ...doc.data() } });
+      // Profile data is per-user: cache it in this process only, never in a
+      // browser or any shared cache in front of the API.
+      res.set('Cache-Control', 'private, no-store');
+      res.json({ success: true, data });
     } else {
       const user = inMemoryUsers.find(u => u.uid === uid);
       if (!user) {
@@ -79,6 +94,7 @@ router.patch('/:uid', async (req, res, next) => {
         ...updates,
         updatedAt: new Date().toISOString()
       });
+      invalidateUser(uid);
       res.json({ success: true });
     } else {
       const idx = inMemoryUsers.findIndex(u => u.uid === uid);

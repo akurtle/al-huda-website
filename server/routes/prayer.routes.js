@@ -3,8 +3,28 @@
 // ========================================
 const express = require('express');
 const router = express.Router();
+const { cached } = require('../lib/cache');
 
 const ALADHAN_API = 'https://api.aladhan.com/v1';
+
+// Prayer times for a given day and place are fixed once computed, so these are
+// cached aggressively — the TTL exists only to bound how long a stale day's
+// entry lingers, not because the answer changes.
+const TIMES_TTL_MS = 6 * 60 * 60 * 1000;
+const CALENDAR_TTL_MS = 24 * 60 * 60 * 1000;
+
+// Coordinates are bucketed to ~1.1 km before both the cache key and the upstream
+// request. Prayer times shift by under a few seconds across that distance, and
+// it turns every visitor in the same neighbourhood into one cache entry instead
+// of one per GPS reading.
+function bucketCoord(value) {
+  const num = Number(value);
+  return Number.isFinite(num) ? num.toFixed(2) : value;
+}
+
+function setPrayerCacheHeaders(res, ttlMs) {
+  res.set('Cache-Control', `public, max-age=${Math.round(ttlMs / 1000)}`);
+}
 
 /**
  * GET /api/prayer/times
@@ -25,23 +45,32 @@ router.get('/times', async (req, res, next) => {
       return `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
     })();
 
-    const response = await fetch(
-      `${ALADHAN_API}/timings/${today}?latitude=${lat}&longitude=${lng}&method=${method}`
-    );
-    const data = await response.json();
+    const latKey = bucketCoord(lat);
+    const lngKey = bucketCoord(lng);
 
-    if (data.code === 200) {
-      res.json({
-        success: true,
-        data: {
+    const payload = await cached(
+      `prayer:times:${today}:${latKey}:${lngKey}:${method}`,
+      TIMES_TTL_MS,
+      async () => {
+        const response = await fetch(
+          `${ALADHAN_API}/timings/${today}?latitude=${latKey}&longitude=${lngKey}&method=${method}`
+        );
+        const data = await response.json();
+
+        if (data.code !== 200) {
+          throw new Error('Aladhan API returned error');
+        }
+
+        return {
           timings: data.data.timings,
           date: data.data.date,
           meta: data.data.meta
-        }
-      });
-    } else {
-      throw new Error('Aladhan API returned error');
-    }
+        };
+      }
+    );
+
+    setPrayerCacheHeaders(res, TIMES_TTL_MS);
+    res.json({ success: true, data: payload });
   } catch (error) {
     next(error);
   }
@@ -62,19 +91,28 @@ router.get('/calendar', async (req, res, next) => {
       year = new Date().getFullYear()
     } = req.query;
 
-    const response = await fetch(
-      `${ALADHAN_API}/calendar/${year}/${month}?latitude=${lat}&longitude=${lng}&method=${method}`
-    );
-    const data = await response.json();
+    const latKey = bucketCoord(lat);
+    const lngKey = bucketCoord(lng);
 
-    if (data.code === 200) {
-      res.json({
-        success: true,
-        data: data.data
-      });
-    } else {
-      throw new Error('Calendar API returned error');
-    }
+    const payload = await cached(
+      `prayer:calendar:${year}:${month}:${latKey}:${lngKey}:${method}`,
+      CALENDAR_TTL_MS,
+      async () => {
+        const response = await fetch(
+          `${ALADHAN_API}/calendar/${year}/${month}?latitude=${latKey}&longitude=${lngKey}&method=${method}`
+        );
+        const data = await response.json();
+
+        if (data.code !== 200) {
+          throw new Error('Calendar API returned error');
+        }
+
+        return data.data;
+      }
+    );
+
+    setPrayerCacheHeaders(res, CALENDAR_TTL_MS);
+    res.json({ success: true, data: payload });
   } catch (error) {
     next(error);
   }
@@ -85,6 +123,8 @@ router.get('/calendar', async (req, res, next) => {
  * Get available calculation methods
  */
 router.get('/methods', (req, res) => {
+  // A hardcoded constant — safe to cache for a day.
+  res.set('Cache-Control', 'public, max-age=86400');
   res.json({
     success: true,
     data: {
